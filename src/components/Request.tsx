@@ -6,7 +6,7 @@ import ModalDialog from "@mui/joy/ModalDialog";
 import Stack from "@mui/joy/Stack";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface Props {
   btnProps?: ButtonProps;

@@ -22,7 +22,12 @@ interface Props {
 const ArticleItem = ({ title, date }: Props) => {
   return (
     <Wrapper data-aos="fade-up">
-      <img src="/article.svg" alt="tets" style={{ flex: 1 }} />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="https://source.unsplash.com/random/?h=260&productivity,law"
+        alt="tets"
+        style={{ flex: 1, maxHeight: 260, minHeight: 260 }}
+      />
 
       <Box
         sx={{

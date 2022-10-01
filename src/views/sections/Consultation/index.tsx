@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/joy";
+import { Box } from "@mui/joy";
 
 import Description from "components/Description";
 import Request from "components/Request";

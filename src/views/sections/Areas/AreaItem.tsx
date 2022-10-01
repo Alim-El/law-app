@@ -1,8 +1,6 @@
 import { ReactNode } from "react";
-import { Link, linkClasses, Typography } from "@mui/joy";
+import { Typography } from "@mui/joy";
 import { styled } from "@mui/joy/styles";
-
-import { ArrowIcon } from "assets/img";
 
 const Wrapper = styled("div")`
   height: 440px;
