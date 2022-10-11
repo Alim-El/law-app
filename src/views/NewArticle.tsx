@@ -6,12 +6,14 @@ import MainLayout from "layouts/MainLayout";
 import { Article } from "types";
 import { addArticle } from "utils/firebase";
 
+const initialData = {
+  date: new Date().getTime(),
+  description: "",
+  title: "",
+};
+
 const NewArticle = () => {
-  const [data, setData] = useState<Omit<Article, "id">>({
-    date: new Date().getTime(),
-    description: "",
-    title: "",
-  });
+  const [data, setData] = useState<Omit<Article, "id">>(initialData);
 
   const { title, description } = data;
 
@@ -24,7 +26,10 @@ const NewArticle = () => {
   };
 
   const handleSaveClick = () => {
-    addArticle(data).then((data) => console.log(data));
+    addArticle(data).then((data) => {
+      alert("Новая статься создана");
+      setData(initialData);
+    });
   };
 
   return (
