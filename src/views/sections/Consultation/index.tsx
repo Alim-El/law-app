@@ -1,7 +1,7 @@
 import { Box } from "@mui/joy";
 
 import Description from "components/Description";
-import Request from "components/Request";
+import RequestConsultation from "components/RequestConsultation";
 import Title from "components/Title";
 
 const Consultation = () => {
@@ -17,7 +17,7 @@ const Consultation = () => {
         Получите бесплатную консультацию у наших юристов
       </Description>
 
-      <Request />
+      <RequestConsultation />
     </Box>
   );
 };

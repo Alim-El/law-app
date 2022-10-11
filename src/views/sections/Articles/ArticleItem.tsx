@@ -1,7 +1,9 @@
 import { Box, Link, linkClasses, Typography } from "@mui/joy";
 import { styled } from "@mui/joy/styles";
+import dayjs from "dayjs";
 
 import { ArrowIcon } from "assets/img";
+import { Article } from "types";
 
 const Wrapper = styled("div")`
   min-width: 350px;
@@ -14,12 +16,7 @@ const Wrapper = styled("div")`
   margin-top: ${({ theme }) => theme.spacing(6.25)} !important;
 `;
 
-interface Props {
-  title: string;
-  date: string;
-}
-
-const ArticleItem = ({ title, date }: Props) => {
+const ArticleItem = ({ title, date }: Article) => {
   return (
     <Wrapper data-aos="fade-up">
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -40,7 +37,7 @@ const ArticleItem = ({ title, date }: Props) => {
         }}
       >
         <Typography textColor="#00486D" fontSize={15}>
-          {date}
+          {dayjs(date).format("MMMM DD, YYYY")}
         </Typography>
 
         <Typography textColor="#00486D" fontSize={22} display="block" mt={2.25}>

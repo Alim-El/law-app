@@ -6,7 +6,7 @@ import NextLink from "next/link";
 
 import routes from "routes";
 
-import Request from "./Request";
+import RequestConsultation from "./RequestConsultation";
 
 const StyledHeader = styled(motion.header)(({ theme }) => ({
   width: "100%",
@@ -83,7 +83,7 @@ const Header = () => {
           (123) 456-7890
         </StyledLink>
 
-        <Request />
+        <RequestConsultation />
       </Stack>
     </StyledHeader>
   );

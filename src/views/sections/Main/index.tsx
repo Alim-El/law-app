@@ -1,7 +1,7 @@
 import { Box, buttonClasses, Stack, Typography } from "@mui/joy";
 import Image from "next/image";
 
-import Request from "components/Request";
+import Request from "components/RequestConsultation";
 import Title from "components/Title";
 
 const MainSection = () => (

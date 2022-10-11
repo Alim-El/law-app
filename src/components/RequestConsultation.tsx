@@ -12,7 +12,7 @@ interface Props {
   btnProps?: ButtonProps;
 }
 
-export default function Request({ btnProps = {} }: Props) {
+export default function RequestConsultation({ btnProps = {} }: Props) {
   const [open, setOpen] = React.useState(false);
   const { sx, ...props } = btnProps;
 

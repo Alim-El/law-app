@@ -1,10 +1,19 @@
+import { useEffect, useState } from "react";
 import { Box, Stack } from "@mui/joy";
 
 import Title from "components/Title";
+import { Article } from "types";
+import { getArticles } from "utils/firebase";
 
 import ArticleItem from "./ArticleItem";
 
 const Articles = () => {
+  const [articles, setArticles] = useState<Article[]>([]);
+
+  useEffect(() => {
+    getArticles().then((data) => setArticles(data));
+  }, []);
+
   return (
     <Box component="section" id="articles" px={10.625} py={20}>
       <Title>Последние статьи</Title>
@@ -19,18 +28,8 @@ const Articles = () => {
           flexWrap: "wrap",
         }}
       >
-        {[
-          {
-            date: "December 13, 2020",
-            title: "12 Things About Web Design Your Boss Wants To Know",
-          },
-          { date: "December 10, 2020", title: "The History Of Web Design" },
-          {
-            date: "December 10, 2020",
-            title: "How to improve Web Design Process",
-          },
-        ].map((props) => (
-          <ArticleItem key={props.title} {...props} />
+        {articles.map((props) => (
+          <ArticleItem key={props.id} {...props} />
         ))}
       </Stack>
     </Box>

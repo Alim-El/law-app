@@ -13,6 +13,8 @@
     "@emotion/styled": "^11.10.4",
     "@mui/joy": "^5.0.0-alpha.46",
     "aos": "^2.3.4",
+    "dayjs": "^1.11.5",
+    "firebase": "^9.11.0",
     "framer-motion": "^7.3.6",
     "next": "12.2.5",
     "react": "18.2.0",
