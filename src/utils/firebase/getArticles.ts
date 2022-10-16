@@ -1,15 +1,20 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
 
 import { Article } from "types";
 import { db } from "utils/firebase";
 
-const getArticles = async () => {
-  const querySnapshot = await getDocs(collection(db, "articles"));
+const getArticles = async (qLimit: number) => {
+  const articlesRef = collection(db, "articles");
+  const q = query(articlesRef, orderBy("date", "desc"), limit(qLimit));
+  const querySnapshot = await getDocs(q);
 
-  return querySnapshot.docs.map((rec) => ({
-    id: rec.id,
-    ...rec.data(),
-  })) as Article[];
+  return {
+    articles: querySnapshot.docs.map((rec) => ({
+      id: rec.id,
+      ...rec.data(),
+    })) as Article[],
+    total: await (await getDocs(articlesRef)).size,
+  };
 };
 
 export default getArticles;

@@ -66,7 +66,7 @@ const Header = () => {
           <StyledLink
             underline="none"
             textColor="#00486D"
-            href={`#${path}`}
+            href={`/#${path}`}
             key={path}
           >
             {name}

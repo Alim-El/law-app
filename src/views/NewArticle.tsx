@@ -1,27 +1,37 @@
+import "react-quill/dist/quill.snow.css";
 import { ChangeEventHandler, useState } from "react";
-import { Box, Button, Textarea, TextField } from "@mui/joy";
+import { Box, Button, TextField } from "@mui/joy";
+import dynamic from "next/dynamic";
 
 import Title from "components/Title";
 import MainLayout from "layouts/MainLayout";
 import { Article } from "types";
 import { addArticle } from "utils/firebase";
 
-const initialData = {
+const Editor = dynamic(() => import("react-quill").then((mod) => mod), {
+  ssr: false,
+});
+
+const initialData = () => ({
   date: new Date().getTime(),
   description: "",
   title: "",
-};
+});
 
 const NewArticle = () => {
   const [data, setData] = useState<Omit<Article, "id">>(initialData);
 
   const { title, description } = data;
 
-  const handleChangeTextField: ChangeEventHandler<
-    HTMLInputElement | HTMLTextAreaElement
-  > = ({ target }) => {
+  const handleChangeTextField: ChangeEventHandler<HTMLInputElement> = ({
+    target,
+  }) => {
     const { value, name } = target;
 
+    setData({ ...data, [name]: value });
+  };
+
+  const handleChangeEditor = (name: string) => (value: string) => {
     setData({ ...data, [name]: value });
   };
 
@@ -33,9 +43,8 @@ const NewArticle = () => {
   };
 
   return (
-    <Box height="100%" px={10} py={5}>
+    <Box height="100%" px={10} py={5} sx={{ ".ql-container": { height: 300 } }}>
       <Title mb={5}>Добавление новой статьи</Title>
-
       <TextField
         name="title"
         onChange={handleChangeTextField}
@@ -44,12 +53,10 @@ const NewArticle = () => {
         label="Заголовок"
       />
 
-      <Textarea
-        name="description"
-        onChange={handleChangeTextField}
+      <Editor
+        theme="snow"
         value={description}
-        minRows={5}
-        placeholder="Текст статьи"
+        onChange={handleChangeEditor("description")}
       />
 
       <Button onClick={handleSaveClick} sx={{ mt: 5 }}>

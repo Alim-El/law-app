@@ -1,13 +1,15 @@
-import { Box, Link, linkClasses, Typography } from "@mui/joy";
+import { Box, Link as MuiLink, linkClasses, Typography } from "@mui/joy";
 import { styled } from "@mui/joy/styles";
 import dayjs from "dayjs";
+import Link from "next/link";
 
 import { ArrowIcon } from "assets/img";
 import { Article } from "types";
 
 const Wrapper = styled("div")`
   min-width: 350px;
-  flex: 1;
+  flex: 1 0 calc(33.33% - 20px);
+  margin: 0 10px;
   border: 1px solid #e4ecf0;
   box-shadow: 0px 24px 24px rgba(0, 72, 109, 0.2);
   border-radius: 2px;
@@ -16,7 +18,7 @@ const Wrapper = styled("div")`
   margin-top: ${({ theme }) => theme.spacing(6.25)} !important;
 `;
 
-const ArticleItem = ({ title, date }: Article) => {
+const ArticleItem = ({ title, date, id }: Article) => {
   return (
     <Wrapper data-aos="fade-up">
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -44,23 +46,25 @@ const ArticleItem = ({ title, date }: Article) => {
           {title}
         </Typography>
 
-        <Link
-          sx={{
-            display: "flex",
-            color: "#00486D",
-            fontWeight: 400,
-            mt: "auto",
+        <Link href={`articles/${id}`} passHref>
+          <MuiLink
+            sx={{
+              display: "flex",
+              color: "#00486D",
+              fontWeight: 400,
+              mt: "auto",
 
-            [`.${linkClasses.endDecorator}`]: {
-              ml: 2,
-              mt: 0.2,
-            },
-          }}
-          endDecorator={<ArrowIcon />}
-          underline="none"
-          fontSize={(theme) => theme.fontSize.lg}
-        >
-          Подробнее
+              [`.${linkClasses.endDecorator}`]: {
+                ml: 2,
+                mt: 0.2,
+              },
+            }}
+            endDecorator={<ArrowIcon />}
+            underline="none"
+            fontSize={(theme) => theme.fontSize.lg}
+          >
+            Подробнее
+          </MuiLink>
         </Link>
       </Box>
     </Wrapper>
