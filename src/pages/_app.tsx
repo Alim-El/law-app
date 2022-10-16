@@ -1,11 +1,14 @@
 import "../../styles/globals.css";
 import { CssVarsProvider } from "@mui/joy";
+import { GlobalStyles } from "@mui/styled-engine";
 import dayjs from "dayjs";
 import ru from "dayjs/locale/ru";
 import updateLocale from "dayjs/plugin/updateLocale";
 import { NextPage } from "next";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+
+import ProgressBar from "components/ProgressBar";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: React.ReactElement) => React.ReactNode;
@@ -35,6 +38,8 @@ function MyApp({ Component, pageProps }: MyAppProps) {
       </Head>
 
       <CssVarsProvider>
+        <ProgressBar />
+
         {getLayout(<Component {...pageProps} />)}
       </CssVarsProvider>
     </>
