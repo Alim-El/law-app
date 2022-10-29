@@ -5,13 +5,22 @@ type Props = {
   children: ReactNode;
 } & TypographyProps;
 
-const Title = ({ children, ...props }: Props) => (
+const Title = ({ children, sx, ...props }: Props) => (
   <Typography
-    fontSize={(theme) => theme.vars.fontSize.xl6}
     level="h1"
     color="primary"
-    component="h1"
+    component="span"
     textColor="#00486D"
+    sx={{
+      fontSize: (theme) => [
+        theme.vars.fontSize.xl4,
+        theme.vars.fontSize.xl5,
+        theme.vars.fontSize.xl6,
+      ],
+      padding: 0,
+      margin: 0,
+      ...sx,
+    }}
     {...props}
   >
     {children}

@@ -1,14 +1,14 @@
 import { Box, Button, Typography } from "@mui/joy";
 
+import Wrapper from "components/Wrapper";
+
 const Service = () => {
   return (
-    <Box
+    <Wrapper
       id="about"
-      component="section"
       sx={{
         background: `url('/people.svg')`,
         height: 680,
-        mx: 10.625,
         display: "flex",
       }}
     >
@@ -58,7 +58,7 @@ const Service = () => {
           О нашей фирме
         </Button>
       </Box>
-    </Box>
+    </Wrapper>
   );
 };
 

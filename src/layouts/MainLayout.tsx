@@ -12,7 +12,7 @@ const MainLayout = ({ children }: Props) => {
     <Box sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
       <Header />
 
-      <div style={{ paddingTop: 108, flex: 1 }}>{children}</div>
+      <Box sx={{ paddingTop: 13.5, flex: 1 }}>{children}</Box>
 
       <Footer />
     </Box>

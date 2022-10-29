@@ -9,17 +9,17 @@ import Social from "./sections/Social";
 
 const Home = () => (
   <>
-    <MainSection />
+    {/* <MainSection /> */}
 
     <AreasSection />
 
     <Service />
 
-    <Articles />
+    {/* <Articles /> */}
 
     <Consultation />
 
-    <Social />
+    {/* <Social /> */}
   </>
 );
 

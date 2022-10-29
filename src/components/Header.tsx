@@ -15,6 +15,10 @@ const StyledHeader = styled(motion.header)(({ theme }) => ({
   padding: theme.spacing(0, 10.625),
   background: "white",
 
+  [theme.breakpoints.down("sm")]: {
+    padding: theme.spacing(0, 2),
+  },
+
   position: "fixed",
   top: 0,
   left: 0,

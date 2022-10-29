@@ -42,7 +42,18 @@ const ArticleItem = ({ title, date, id }: Article) => {
           {dayjs(date).format("MMMM DD, YYYY")}
         </Typography>
 
-        <Typography textColor="#00486D" fontSize={22} display="block" mt={2.25}>
+        <Typography
+          textColor="#00486D"
+          fontSize={22}
+          display="block"
+          mt={2.25}
+          sx={{
+            display: "-webkit-box",
+            WebkitLineClamp: 2, // количество строк
+            WebkitBoxOrient: "vertical",
+            overflow: "hidden",
+          }}
+        >
           {title}
         </Typography>
 

@@ -15,15 +15,19 @@ const Article = ({ article }: Props) => {
   return (
     <Box sx={{ px: 10.625 }}>
       <Box display="flex" alignItems="center" justifyContent="space-between">
-        <Title pb={5}>{title}</Title>
-
-        <Typography>{dayjs(date).format("MMMM DD, YYYY")}</Typography>
+        <Title pb={5} fontSize={30}>
+          {title}
+        </Title>
       </Box>
 
       <div
         style={{ textAlign: "justify" }}
         dangerouslySetInnerHTML={{ __html: description || "" }}
       />
+
+      <Typography textAlign="right" sx={{ textAlign: "right", my: 5 }}>
+        {dayjs(date).format("MMMM DD, YYYY")}
+      </Typography>
     </Box>
   );
 };

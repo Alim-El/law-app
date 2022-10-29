@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Box, Button, CircularProgress, Stack } from "@mui/joy";
 
 import Title from "components/Title";
+import Wrapper from "components/Wrapper";
 import { Article } from "types";
 import { getArticles } from "utils/firebase";
 
@@ -33,7 +34,7 @@ const Articles = () => {
   }, [limit]);
 
   return (
-    <Box component="section" id="articles" px={10.625} py={20}>
+    <Wrapper id="articles" py={20}>
       <Title>Последние статьи</Title>
 
       <Box
@@ -55,7 +56,7 @@ const Articles = () => {
           {loading ? <CircularProgress /> : "Загрузить еще..."}
         </Button>
       )}
-    </Box>
+    </Wrapper>
   );
 };
 
