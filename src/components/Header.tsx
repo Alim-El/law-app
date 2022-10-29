@@ -1,4 +1,5 @@
-import { Link, Stack } from "@mui/joy";
+import MenuIcon from "@mui/icons-material/Menu";
+import { IconButton, Link, Stack } from "@mui/joy";
 import { styled } from "@mui/joy/styles";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
@@ -68,6 +69,7 @@ const Header = () => {
             textColor="#00486D"
             href={`/#${path}`}
             key={path}
+            sx={{ display: ["none", "none", "none", "block"] }}
           >
             {name}
           </StyledLink>
@@ -79,11 +81,22 @@ const Header = () => {
         sx={{ alignItems: "center", ml: "auto" }}
         spacing={4}
       >
-        <StyledLink underline="none" textColor="black" href="tel:123-456-7890">
+        <StyledLink
+          sx={{ display: ["none", "none", "none", "block"] }}
+          underline="none"
+          textColor="black"
+          href="tel:123-456-7890"
+        >
           (123) 456-7890
         </StyledLink>
 
-        <RequestConsultation />
+        <RequestConsultation
+          btnProps={{ sx: { display: ["none", "none", "block", "block"] } }}
+        />
+
+        <IconButton sx={{ display: ["block", "block", "block", "none"] }}>
+          <MenuIcon />
+        </IconButton>
       </Stack>
     </StyledHeader>
   );
