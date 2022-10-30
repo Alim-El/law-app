@@ -26,7 +26,17 @@ type Props = {
 const AreaItem = ({ title, description, icon, animated }: Props) => {
   return (
     <Wrapper data-aos={animated && "fade-up"}>
-      {icon}
+      {
+        <div
+          style={{
+            display: "flex",
+            alignItems: "flex-end",
+            height: 64,
+          }}
+        >
+          {icon}
+        </div>
+      }
 
       <Typography
         textColor="#00486D"
