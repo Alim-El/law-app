@@ -1,5 +1,11 @@
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
 import { useEffect, useState } from "react";
 import { Box, Button, CircularProgress } from "@mui/joy";
+// import required modules
+import { Pagination } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 import Title from "components/Title";
 import Wrapper from "components/Wrapper";
@@ -39,7 +45,7 @@ const Articles = () => {
 
       <Box
         sx={{
-          display: "flex",
+          display: ["none", "flex"],
           width: "100%",
           justifyContent: "space-between",
           flexWrap: "wrap",
@@ -51,11 +57,27 @@ const Articles = () => {
         ))}
       </Box>
 
-      {limit < total && (
+      <Box display={["block", "none"]}>
+        <Swiper
+          pagination={true}
+          modules={[Pagination]}
+          // slidesPerView={3}
+          className="mySwiper"
+          style={{ paddingBottom: 50 }}
+        >
+          {articles.map((props) => (
+            <SwiperSlide key={props.id}>
+              <ArticleItem {...props} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </Box>
+
+      {/* {limit < total && (
         <Button onClick={handeClickLoad} variant="plain">
           {loading ? <CircularProgress /> : "Загрузить еще..."}
         </Button>
-      )}
+      )} */}
     </Wrapper>
   );
 };

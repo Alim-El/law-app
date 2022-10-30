@@ -1,5 +1,6 @@
 import { Box, Link as MuiLink, linkClasses, Typography } from "@mui/joy";
-import { styled } from "@mui/joy/styles";
+import { styled, useTheme } from "@mui/joy/styles";
+import { useMediaQuery } from "@mui/material";
 import dayjs from "dayjs";
 import Link from "next/link";
 
@@ -19,8 +20,13 @@ const Wrapper = styled("div")`
 `;
 
 const ArticleItem = ({ title, date, id }: Article) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  console.log(isMobile);
+
   return (
-    <Wrapper data-aos="fade-up">
+    <Wrapper data-aos={!isMobile && "fade-up"}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="https://source.unsplash.com/random/?h=260&productivity,law"
