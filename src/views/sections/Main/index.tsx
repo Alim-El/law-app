@@ -21,7 +21,7 @@ const MainSection = () => (
         display: "flex",
         flexDirection: "column",
         position: "relative",
-        py: 18,
+        py: [10, 18],
       }}
     >
       <Stack

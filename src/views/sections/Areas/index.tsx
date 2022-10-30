@@ -42,7 +42,7 @@ const AreasSection = () => {
   }, []);
 
   return (
-    <Wrapper id="areas" py={[5, 10, 20]}>
+    <Wrapper id="areas" py={[10, 20]}>
       <Title>Сфера деятельности</Title>
 
       <Description pt={3} width={["auto", 600]}>
