@@ -2,7 +2,8 @@
 import "swiper/css";
 import "swiper/css/pagination";
 import { useEffect, useState } from "react";
-import { Box, Button, CircularProgress } from "@mui/joy";
+import { Box, Button, CircularProgress, useTheme } from "@mui/joy";
+import { useMediaQuery } from "@mui/material";
 // import required modules
 import { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -15,6 +16,8 @@ import { getArticles } from "utils/firebase";
 import ArticleItem from "./ArticleItem";
 
 const Articles = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [data, setData] = useState<{ articles: Article[]; total: number }>({
     articles: [],
     total: 0,
@@ -40,8 +43,8 @@ const Articles = () => {
   }, [limit]);
 
   return (
-    <Wrapper id="articles" py={20}>
-      <Title>Последние статьи</Title>
+    <Wrapper id="articles" py={[10, 20]}>
+      <Title component="div">Последние статьи</Title>
 
       <Box
         sx={{
@@ -49,34 +52,42 @@ const Articles = () => {
           width: "100%",
           justifyContent: "space-between",
           flexWrap: "wrap",
+          mt: 6.25,
           mb: 10,
         }}
       >
         {articles.map((props) => (
-          <ArticleItem key={props.id} {...props} />
+          <ArticleItem animated={true} key={props.id} {...props} />
         ))}
       </Box>
 
-      <Box display={["block", "none"]}>
+      <Box display={["flex", "none"]} height="100%" mt={6.25}>
         <Swiper
           pagination={true}
           modules={[Pagination]}
-          // slidesPerView={3}
           className="mySwiper"
-          style={{ paddingBottom: 50 }}
+          style={{ height: "100%", paddingBottom: 50 }}
         >
           {articles.map((props) => (
             <SwiperSlide key={props.id}>
-              <ArticleItem {...props} />
+              <ArticleItem animated={false} {...props} />
             </SwiperSlide>
           ))}
         </Swiper>
       </Box>
 
-      {/* {limit < total && (
+      {!isMobile && limit < total && (
         <Button onClick={handeClickLoad} variant="plain">
           {loading ? <CircularProgress /> : "Загрузить еще..."}
         </Button>
+      )}
+
+      {/* {isMobile && (
+        <Link href="/articles" passHref>
+          <Button component="a" variant="plain">
+            Все статьи
+          </Button>
+        </Link>
       )} */}
     </Wrapper>
   );

@@ -23,7 +23,7 @@ const Service = () => {
           alignItems: "center",
           justifyContent: "center",
           background: "#00486D",
-          px: 7,
+          px: [2, 7],
         }}
       >
         <Typography textColor="white" fontWeight={400} fontSize={32}>

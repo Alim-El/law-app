@@ -4,14 +4,15 @@ import { styled } from "@mui/joy/styles";
 
 const Wrapper = styled("div")`
   height: 440px;
-  max-width: 400px;
-  min-width: 350px;
+  min-width: 300px;
+  flex: 1 0 calc(33.33% - 20px);
+  margin: 0 10px;
   border: 1px solid #e4ecf0;
   box-shadow: 0px 24px 24px rgba(0, 72, 109, 0.2);
   border-radius: 2px;
-  padding: 44px 36px 41px 33px;
   display: flex;
   flex-direction: column;
+  padding: 44px 36px 41px 33px;
   margin-top: ${({ theme }) => theme.spacing(6.25)} !important;
 `;
 
@@ -19,11 +20,12 @@ type Props = {
   title: string;
   description: string;
   icon: ReactNode;
+  animated: boolean;
 };
 
-const AreaItem = ({ title, description, icon }: Props) => {
+const AreaItem = ({ title, description, icon, animated }: Props) => {
   return (
-    <Wrapper data-aos="fade-up">
+    <Wrapper data-aos={animated && "fade-up"}>
       {icon}
 
       <Typography

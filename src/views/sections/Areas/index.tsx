@@ -1,7 +1,9 @@
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-import { Stack } from "@mui/joy";
+import { Box } from "@mui/joy";
 import AOS from "aos";
+import { Pagination } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 import { BookIcon, BuildingIcon, WebIcon } from "assets/img";
 import Description from "components/Description";
@@ -10,6 +12,29 @@ import Wrapper from "components/Wrapper";
 
 import AreaItem from "./AreaItem";
 
+const areas = [
+  {
+    icon: <WebIcon />,
+    title: "Интеллектуальная собственность",
+    description:
+      "Право интеллектуальной собственности имеет дело с законами о защите создателей и владельцев изобретений, письменных работ, музыки, дизайна и других произведений.",
+  },
+
+  {
+    icon: <BuildingIcon />,
+    title: "Недвижимость",
+    description:
+      "Право недвижимости - это отрасль гражданского права, которая охватывает право владения, пользования и пользования землей.",
+  },
+
+  {
+    icon: <BookIcon />,
+    title: "Налоговое право",
+    description:
+      "Налоговое законодательство охватывает подоходный, корпоративный, акцизный, налог на роскошь, налог на имущество и другие виды налогов.",
+  },
+];
+
 const AreasSection = () => {
   useEffect(() => {
     AOS.init({ delay: 50, duration: 1200 });
@@ -17,7 +42,7 @@ const AreasSection = () => {
   }, []);
 
   return (
-    <Wrapper id="areas" py={[0, 10, 20]}>
+    <Wrapper id="areas" py={[5, 10, 20]}>
       <Title>Сфера деятельности</Title>
 
       <Description pt={3} width={["auto", 600]}>
@@ -25,35 +50,34 @@ const AreasSection = () => {
         приведет к наилучшему возможному результату.
       </Description>
 
-      <Stack
-        direction="row"
+      <Box
         sx={{
-          flexWrap: "wrap",
-          alignItems: "center",
+          display: ["none", "flex"],
+          width: "100%",
           justifyContent: "space-between",
-          px: {
-            mobile: 5,
-          },
+          flexWrap: "wrap",
+          mb: 10,
         }}
       >
-        <AreaItem
-          icon={<WebIcon />}
-          title="Интеллектуальная собственность"
-          description="Право интеллектуальной собственности имеет дело с законами о защите создателей и владельцев изобретений, письменных работ, музыки, дизайна и других произведений."
-        />
+        {areas.map((props) => (
+          <AreaItem key={props.title} animated={true} {...props} />
+        ))}
+      </Box>
 
-        <AreaItem
-          icon={<BuildingIcon />}
-          title="Недвижимость"
-          description="Право недвижимости - это отрасль гражданского права, которая охватывает право владения, пользования и пользования землей."
-        />
-
-        <AreaItem
-          icon={<BookIcon />}
-          title="Налоговое право"
-          description="Налоговое законодательство охватывает подоходный, корпоративный, акцизный, налог на роскошь, налог на имущество и другие виды налогов."
-        />
-      </Stack>
+      <Box display={["flex", "none"]} height="100%">
+        <Swiper
+          pagination={true}
+          modules={[Pagination]}
+          className="mySwiper"
+          style={{ height: "100%", paddingBottom: 50 }}
+        >
+          {areas.map((props) => (
+            <SwiperSlide key={props.title}>
+              <AreaItem animated={false} {...props} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </Box>
     </Wrapper>
   );
 };

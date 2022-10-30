@@ -1,6 +1,5 @@
 import { Box, Link as MuiLink, linkClasses, Typography } from "@mui/joy";
-import { styled, useTheme } from "@mui/joy/styles";
-import { useMediaQuery } from "@mui/material";
+import { styled } from "@mui/joy/styles";
 import dayjs from "dayjs";
 import Link from "next/link";
 
@@ -8,7 +7,7 @@ import { ArrowIcon } from "assets/img";
 import { Article } from "types";
 
 const Wrapper = styled("div")`
-  min-width: 320px;
+  min-width: 300px;
   flex: 1 0 calc(33.33% - 20px);
   margin: 0 10px;
   border: 1px solid #e4ecf0;
@@ -19,14 +18,14 @@ const Wrapper = styled("div")`
   margin-top: ${({ theme }) => theme.spacing(6.25)} !important;
 `;
 
-const ArticleItem = ({ title, date, id }: Article) => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
-  console.log(isMobile);
-
+const ArticleItem = ({
+  title,
+  date,
+  id,
+  animated,
+}: Article & { animated: boolean }) => {
   return (
-    <Wrapper data-aos={!isMobile && "fade-up"}>
+    <Wrapper data-aos={animated && "fade-up"}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="https://source.unsplash.com/random/?h=260&productivity,law"
