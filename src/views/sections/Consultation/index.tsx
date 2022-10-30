@@ -9,9 +9,14 @@ const Consultation = () => {
   return (
     <Box sx={{ background: "#E4ECF0", py: 20 }}>
       <Wrapper textAlign="center">
-        {/* <Title>Нужна профессиональная юридическая консультация?</Title> */}
+        <Title sx={{ textAlign: "center" }}>
+          Нужна профессиональная юридическая консультация?
+        </Title>
 
-        <Description m={(theme) => theme.spacing(2.5, 0, 6.5)}>
+        <Description
+          m={(theme) => theme.spacing(2.5, 0, 6.5)}
+          sx={{ textAlign: "center" }}
+        >
           Получите бесплатную консультацию у наших юристов
         </Description>
 

@@ -19,6 +19,7 @@ const Title = ({ children, sx, ...props }: Props) => (
       ],
       padding: 0,
       margin: 0,
+      textAlign: ["center", "left"],
       ...sx,
     }}
     {...props}

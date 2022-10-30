@@ -7,7 +7,7 @@ import { ArrowIcon } from "assets/img";
 import { Article } from "types";
 
 const Wrapper = styled("div")`
-  min-width: 350px;
+  min-width: 320px;
   flex: 1 0 calc(33.33% - 20px);
   margin: 0 10px;
   border: 1px solid #e4ecf0;

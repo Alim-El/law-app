@@ -1,5 +1,5 @@
 import MenuIcon from "@mui/icons-material/Menu";
-import { IconButton, Link, Stack } from "@mui/joy";
+import { Box, IconButton, Link, Stack } from "@mui/joy";
 import { styled } from "@mui/joy/styles";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
@@ -15,7 +15,7 @@ const StyledHeader = styled(motion.header)(({ theme }) => ({
   padding: theme.spacing(0, 10.625),
   background: "white",
 
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("md")]: {
     padding: theme.spacing(0, 2),
   },
 
@@ -60,48 +60,57 @@ const Header = () => {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
     >
-      <Stack direction="row" spacing={4} sx={{ alignItems: "center" }}>
-        <NextLink href="/" passHref>
-          <Link>
-            <Image src="/logo.svg" alt="logo" height={100} width={200} />
-          </Link>
-        </NextLink>
-
-        {routes.map(({ name, path }) => (
-          <StyledLink
-            underline="none"
-            textColor="#00486D"
-            href={`/#${path}`}
-            key={path}
-            sx={{ display: ["none", "none", "none", "block"] }}
-          >
-            {name}
-          </StyledLink>
-        ))}
-      </Stack>
-
-      <Stack
-        direction="row"
-        sx={{ alignItems: "center", ml: "auto" }}
-        spacing={4}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          flex: 1,
+          maxWidth: 1270,
+        }}
       >
-        <StyledLink
-          sx={{ display: ["none", "none", "none", "block"] }}
-          underline="none"
-          textColor="black"
-          href="tel:123-456-7890"
+        <Stack direction="row" spacing={4} sx={{ alignItems: "center" }}>
+          <NextLink href="/" passHref>
+            <Link>
+              <Image src="/logo.svg" alt="logo" height={100} width={200} />
+            </Link>
+          </NextLink>
+
+          {routes.map(({ name, path }) => (
+            <StyledLink
+              underline="none"
+              textColor="#00486D"
+              href={`/#${path}`}
+              key={path}
+              sx={{ display: ["none", "none", "none", "block"] }}
+            >
+              {name}
+            </StyledLink>
+          ))}
+        </Stack>
+
+        <Stack
+          direction="row"
+          sx={{ alignItems: "center", ml: "auto" }}
+          spacing={4}
         >
-          (123) 456-7890
-        </StyledLink>
+          <StyledLink
+            sx={{ display: ["none", "none", "none", "block"] }}
+            underline="none"
+            textColor="black"
+            href="tel:123-456-7890"
+          >
+            (123) 456-7890
+          </StyledLink>
 
-        <RequestConsultation
-          btnProps={{ sx: { display: ["none", "none", "block", "block"] } }}
-        />
+          <RequestConsultation
+            btnProps={{ sx: { display: ["none", "none", "block", "block"] } }}
+          />
 
-        <IconButton sx={{ display: ["block", "block", "block", "none"] }}>
-          <MenuIcon />
-        </IconButton>
-      </Stack>
+          <IconButton sx={{ display: ["block", "block", "block", "none"] }}>
+            <MenuIcon />
+          </IconButton>
+        </Stack>
+      </Box>
     </StyledHeader>
   );
 };

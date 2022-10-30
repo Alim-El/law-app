@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/joy";
 import dayjs from "dayjs";
 
 import Title from "components/Title";
+import Wrapper from "components/Wrapper";
 import MainLayout from "layouts/MainLayout";
 import { Article as TArticle } from "types";
 
@@ -13,7 +14,7 @@ const Article = ({ article }: Props) => {
   const { title, date, description } = article;
 
   return (
-    <Box sx={{ px: 10.625 }}>
+    <Wrapper>
       <Box display="flex" alignItems="center" justifyContent="space-between">
         <Title pb={5} fontSize={30}>
           {title}
@@ -28,7 +29,7 @@ const Article = ({ article }: Props) => {
       <Typography textAlign="right" sx={{ textAlign: "right", my: 5 }}>
         {dayjs(date).format("MMMM DD, YYYY")}
       </Typography>
-    </Box>
+    </Wrapper>
   );
 };
 

@@ -8,9 +8,9 @@ const StyledWrapper = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down(1050)]: {
     maxWidth: 750,
   },
-  //   [theme.breakpoints.down(1050)]: {
-  //     maxWidth: 950,
-  //   },
+  [theme.breakpoints.down(400)]: {
+    maxWidth: 320,
+  },
   margin: "0 auto",
 }));
 

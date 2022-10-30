@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Box, Button, CircularProgress, Stack } from "@mui/joy";
+import { Box, Button, CircularProgress } from "@mui/joy";
 
 import Title from "components/Title";
 import Wrapper from "components/Wrapper";

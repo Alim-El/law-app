@@ -10,32 +10,27 @@ const Service = () => {
         background: `url('/people.svg')`,
         height: 680,
         display: "flex",
+        justifyContent: ["center", "flex-end"],
+        alignItems: ["center", "flex-end"],
       }}
     >
       <Box
         sx={{
-          height: 490,
-          width: 425,
-          marginLeft: "auto",
-          mt: "auto",
-          justifyContent: "flex-end",
-          alignItems: "flex-end",
+          height: ["100%", 490],
+          width: ["100%", 425],
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
           background: "#00486D",
           px: 7,
-          pt: 6.6,
         }}
       >
         <Typography textColor="white" fontWeight={400} fontSize={32}>
           Индивидуальные юридические услуги
         </Typography>
 
-        <Typography
-          textColor="white"
-          fontSize={19}
-          // lineHeight="35px"
-          fontWeight={400}
-          mt={2.8}
-        >
+        <Typography textColor="white" fontSize={19} fontWeight={400} mt={2.8}>
           Один размер не подходит для всех, когда речь идет о ваших юридических
           потребностях. Мы создаем команду и стратегию в соответствии с вашим
           желаемым результатом.
@@ -43,6 +38,7 @@ const Service = () => {
 
         <Button
           sx={{
+            alignSelf: "flex-start",
             backgroundColor: "white",
             color: "#00486D",
             p: (theme) => theme.spacing(1.5, 3),

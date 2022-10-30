@@ -5,7 +5,7 @@ type Props = {
   children: ReactNode;
 } & TypographyProps;
 
-const Description = ({ children, ...props }: Props) => (
+const Description = ({ children, sx, ...props }: Props) => (
   <Typography
     fontSize={(theme) => theme.vars.fontSize.xl2}
     lineHeight={(theme) => theme.vars.lineHeight.lg}
@@ -18,6 +18,8 @@ const Description = ({ children, ...props }: Props) => (
         theme.vars.fontSize.xl2,
       ],
       wordBreak: "break-word",
+      textAlign: ["center", "left"],
+      ...sx,
     }}
     {...props}
   >
