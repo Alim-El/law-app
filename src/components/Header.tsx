@@ -1,6 +1,9 @@
+import { useState } from "react";
+import { useRef } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Box, IconButton, Link, Stack } from "@mui/joy";
 import { styled } from "@mui/joy/styles";
+import { Drawer, useTheme } from "@mui/material";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import NextLink from "next/link";
@@ -54,11 +57,15 @@ const Header = () => {
     [108, 100, 90, 80, 70]
   );
 
+  const [openDrawer, setOpenDrawer] = useState(false);
+  const ref = useRef(null);
+
   return (
     <StyledHeader
       style={{ height }}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
+      ref={ref}
     >
       <Box
         sx={{
@@ -106,11 +113,42 @@ const Header = () => {
             btnProps={{ sx: { display: ["none", "none", "block", "block"] } }}
           />
 
-          <IconButton sx={{ display: ["block", "block", "block", "none"] }}>
+          <IconButton
+            onClick={() => setOpenDrawer(!openDrawer)}
+            sx={{ display: ["block", "block", "block", "none"] }}
+          >
             <MenuIcon />
           </IconButton>
         </Stack>
       </Box>
+      <Drawer
+        open={openDrawer}
+        onClose={() => setOpenDrawer(false)}
+        anchor="right"
+        container={ref.current}
+        sx={{
+          width: "100vw",
+          "& > .MuiPaper-root": {
+            // mt: height.get() / 8,
+            // width: "100vw",
+          },
+        }}
+      >
+        <Stack sx={{ p: 5 }}>
+          {routes.map(({ name, path }) => (
+            <StyledLink
+              underline="none"
+              textColor="#00486D"
+              href={`/#${path}`}
+              key={path}
+              onClick={() => setOpenDrawer(false)}
+              // sx={{ display: ["none", "none", "none", "block"] }}
+            >
+              {name}
+            </StyledLink>
+          ))}
+        </Stack>
+      </Drawer>
     </StyledHeader>
   );
 };

@@ -1,5 +1,6 @@
 import { FirebaseOptions, initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 const NEXT_PUBLIC_FIREBASE_API_KEY = process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
 const NEXT_PUBLIC_AUTH_DOMAIN = process.env.NEXT_PUBLIC_AUTH_DOMAIN;
@@ -22,6 +23,7 @@ export const firebaseConfig = {
 
 export const firebase_app = initializeApp(firebaseConfig);
 export const db = getFirestore(firebase_app);
+export const storage = getStorage(firebase_app);
 
 export { default as getArticles } from "./getArticles";
 export { default as addArticle } from "./addArticle";
