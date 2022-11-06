@@ -1,9 +1,8 @@
-import "../../styles/globals.css";
+import "../styles/globals.css";
 import colors from "@mui/joy/colors";
 import {
   CssVarsProvider,
   extendTheme as extendJoyTheme,
-  useColorScheme,
 } from "@mui/joy/styles";
 import { CssBaseline } from "@mui/material";
 import { experimental_extendTheme as extendMuiTheme } from "@mui/material/styles";
@@ -16,6 +15,7 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 
 import ProgressBar from "components/ProgressBar";
+import WithFabButton from "components/WithFabButton";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: React.ReactElement) => React.ReactNode;
@@ -119,7 +119,7 @@ function MyApp({ Component, pageProps }: MyAppProps) {
         <ProgressBar />
         <CssBaseline />
 
-        {getLayout(<Component {...pageProps} />)}
+        <WithFabButton>{getLayout(<Component {...pageProps} />)}</WithFabButton>
       </CssVarsProvider>
     </>
   );

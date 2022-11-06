@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useRef } from "react";
+import CloseIcon from "@mui/icons-material/Close";
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Box, IconButton, Link, Stack } from "@mui/joy";
 import { styled } from "@mui/joy/styles";
-import { Drawer, useTheme } from "@mui/material";
+import { Divider, Drawer } from "@mui/material";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import NextLink from "next/link";
@@ -59,6 +61,8 @@ const Header = () => {
 
   const [openDrawer, setOpenDrawer] = useState(false);
   const ref = useRef(null);
+
+  const handleClose = () => setOpenDrawer(false);
 
   return (
     <StyledHeader
@@ -123,31 +127,50 @@ const Header = () => {
       </Box>
       <Drawer
         open={openDrawer}
-        onClose={() => setOpenDrawer(false)}
+        onClose={handleClose}
         anchor="right"
         container={ref.current}
-        sx={{
-          width: "100vw",
-          "& > .MuiPaper-root": {
-            // mt: height.get() / 8,
-            // width: "100vw",
-          },
-        }}
       >
-        <Stack sx={{ p: 5 }}>
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="space-between"
+          pl={2}
+        >
+          {/* <Typography level="h3" textColor="#00486D" component="span">
+            Меню
+          </Typography> */}
+
+          <Image alt="logo-mini" src="/logo.svg" height={30} width={150} />
+
+          <IconButton
+            sx={{ m: 2, alignSelf: "flex-end" }}
+            onClick={handleClose}
+          >
+            <CloseIcon />
+          </IconButton>
+        </Box>
+        <Divider />
+        <Stack sx={{ p: (theme) => theme.spacing(5, 15, 5, 5) }} spacing={3}>
           {routes.map(({ name, path }) => (
-            <StyledLink
-              underline="none"
-              textColor="#00486D"
-              href={`/#${path}`}
-              key={path}
-              onClick={() => setOpenDrawer(false)}
-              // sx={{ display: ["none", "none", "none", "block"] }}
-            >
-              {name}
-            </StyledLink>
+            <Box key={path} display="flex" alignItems="center">
+              <FiberManualRecordIcon sx={{ pr: 1 }} color="primary" />
+              <StyledLink
+                underline="none"
+                textColor="#00486D"
+                href={`/#${path}`}
+                key={path}
+                onClick={handleClose}
+              >
+                {name}
+              </StyledLink>
+            </Box>
           ))}
         </Stack>
+        <Divider />
+        <RequestConsultation
+          btnProps={{ sx: { alignSelf: "center", mt: 10 } }}
+        />
       </Drawer>
     </StyledHeader>
   );

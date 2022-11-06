@@ -4,7 +4,7 @@ import { GetServerSideProps } from "next";
 
 import getArticleById from "utils/firebase/getArticleById";
 
-export { default } from "views/Article";
+export { default } from "../views/Article";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { query } = ctx;
