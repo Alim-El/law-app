@@ -1,7 +1,6 @@
 import * as React from "react";
-import AddIcon from "@mui/icons-material/Add";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import { Collapse, Fab } from "@mui/material";
+import { Collapse } from "@mui/material";
 import Alert from "@mui/material/Alert";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
@@ -12,7 +11,6 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { useRouter } from "next/router";
-import { setCookie } from "nookies";
 
 const email = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
 const pass = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;

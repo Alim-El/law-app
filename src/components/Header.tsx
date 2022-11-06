@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useRef } from "react";
 import CloseIcon from "@mui/icons-material/Close";
-import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Box, IconButton, Link, Stack } from "@mui/joy";
 import { styled } from "@mui/joy/styles";

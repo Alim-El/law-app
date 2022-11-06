@@ -1,4 +1,5 @@
-import { Box, Typography } from "@mui/joy";
+import { Box, Typography, useTheme } from "@mui/joy";
+import { useMediaQuery } from "@mui/material";
 import dayjs from "dayjs";
 
 import Title from "components/Title";
@@ -12,21 +13,46 @@ interface Props {
 
 const Article = ({ article }: Props) => {
   const { title, date, description } = article;
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <Wrapper>
       <Box display="flex" alignItems="center" justifyContent="space-between">
-        <Title pb={5} fontSize={30}>
+        <Title
+          pb={5}
+          sx={{
+            fontSize: (theme) => [
+              theme.vars.fontSize.xl,
+              theme.vars.fontSize.xl3,
+              theme.vars.fontSize.xl4,
+            ],
+            px: [1.25, 0],
+            textAlign: ["left", "center"],
+          }}
+        >
           {title}
         </Title>
       </Box>
 
       <div
-        style={{ textAlign: "justify" }}
+        style={{ textAlign: "justify", padding: isMobile ? "0 10px" : "none" }}
         dangerouslySetInnerHTML={{ __html: description || "" }}
       />
 
-      <Typography textAlign="right" sx={{ textAlign: "right", my: 5 }}>
+      <Typography
+        textAlign="right"
+        sx={{
+          textAlign: "right",
+          my: 5,
+          mr: [2, 0],
+          fontSize: (theme) => [
+            theme.vars.fontSize.sm,
+            theme.vars.fontSize.xl3,
+            theme.vars.fontSize.xl4,
+          ],
+        }}
+      >
         {dayjs(date).format("MMMM DD, YYYY")}
       </Typography>
     </Wrapper>
