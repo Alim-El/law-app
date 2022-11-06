@@ -153,23 +153,20 @@ const Header = () => {
         <Divider />
         <Stack sx={{ p: (theme) => theme.spacing(5, 15, 5, 5) }} spacing={3}>
           {routes.map(({ name, path }) => (
-            <Box key={path} display="flex" alignItems="center">
-              <FiberManualRecordIcon sx={{ pr: 1 }} color="primary" />
-              <StyledLink
-                underline="none"
-                textColor="#00486D"
-                href={`/#${path}`}
-                key={path}
-                onClick={handleClose}
-              >
-                {name}
-              </StyledLink>
-            </Box>
+            <StyledLink
+              underline="none"
+              textColor="#00486D"
+              href={`/#${path}`}
+              key={path}
+              onClick={handleClose}
+            >
+              {name}
+            </StyledLink>
           ))}
         </Stack>
         <Divider />
         <RequestConsultation
-          btnProps={{ sx: { alignSelf: "center", mt: 10 } }}
+          btnProps={{ sx: { alignSelf: "center", mt: "auto", mb: 2 } }}
         />
       </Drawer>
     </StyledHeader>
