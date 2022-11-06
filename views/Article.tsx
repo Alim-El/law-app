@@ -28,7 +28,7 @@ const Article = ({ article }: Props) => {
               theme.vars.fontSize.xl4,
             ],
             px: [1.25, 0],
-            textAlign: ["left", "center"],
+            textAlign: "left",
           }}
         >
           {title}
@@ -46,11 +46,7 @@ const Article = ({ article }: Props) => {
           textAlign: "right",
           my: 5,
           mr: [2, 0],
-          fontSize: (theme) => [
-            theme.vars.fontSize.sm,
-            theme.vars.fontSize.xl3,
-            theme.vars.fontSize.xl4,
-          ],
+          fontSize: (theme) => [theme.vars.fontSize.sm, theme.vars.fontSize.md],
         }}
       >
         {dayjs(date).format("MMMM DD, YYYY")}
