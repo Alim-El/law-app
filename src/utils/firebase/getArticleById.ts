@@ -1,4 +1,4 @@
-import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 
 import { Article } from "types";
 import { db } from "utils/firebase";
@@ -8,7 +8,7 @@ const getArticleById = async (id: string) => {
   const docSnap = await getDoc(docRef);
   //   const querySnapshot = await getDocs(collection(db, "articles"));
 
-  return docSnap.data();
+  return docSnap.data() as Article;
 };
 
 export default getArticleById;
