@@ -1,11 +1,13 @@
-import { Box, Typography, useTheme } from "@mui/joy";
-import { useMediaQuery } from "@mui/material";
+import { Box, Button, Stack, Typography, useTheme } from "@mui/joy";
+import { NoSsr, useMediaQuery } from "@mui/material";
 import dayjs from "dayjs";
+import { useRouter } from "next/router";
 
 import Title from "components/Title";
 import Wrapper from "components/Wrapper";
 import MainLayout from "layouts/MainLayout";
 import { Article as TArticle } from "types";
+import isAuthed from "utils/isAuthed";
 
 interface Props {
   article: TArticle;
@@ -15,6 +17,24 @@ const Article = ({ article }: Props) => {
   const { title, date, description } = article;
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const authed = isAuthed();
+  const router = useRouter();
+
+  const handleEditButtonClick = () => {
+    const url = {
+      pathname: "/edit-article",
+      query: {
+        articleId: router.query.id,
+        title,
+        date,
+        description,
+      },
+    };
+
+    router.push(url);
+  };
+
+  const handleDeleteButtonClick = () => {};
 
   return (
     <Wrapper>
@@ -51,6 +71,15 @@ const Article = ({ article }: Props) => {
       >
         {dayjs(date).format("MMMM DD, YYYY")}
       </Typography>
+
+      {authed && (
+        <NoSsr>
+          <Stack spacing={5} direction="row" sx={{ mb: 5 }}>
+            <Button onClick={handleEditButtonClick}>Редактировать</Button>
+            <Button color="danger">Удалить</Button>
+          </Stack>
+        </NoSsr>
+      )}
     </Wrapper>
   );
 };

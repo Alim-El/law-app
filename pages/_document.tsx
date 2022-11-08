@@ -16,6 +16,10 @@ export default function Document() {
         />
 
         <meta charSet="utf-8" />
+        <meta
+          name="google-site-verification"
+          content="qo7hCt_pOJ4faLdzBtrjxpB5tefBFyCGLstOYwvA_nE"
+        />
       </Head>
       <body>
         <Main />

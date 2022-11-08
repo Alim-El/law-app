@@ -25,7 +25,7 @@ type Props = {
 
 const AreaItem = ({ title, description, icon, animated }: Props) => {
   return (
-    <Wrapper data-aos={animated && "fade-up"}>
+    <Wrapper data-aos={animated && "fade-up"} data-aos-once="true">
       {
         <div
           style={{

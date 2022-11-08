@@ -3,6 +3,7 @@ import React, { ChangeEventHandler, useState } from "react";
 import { Box, Button, TextField, Typography } from "@mui/joy";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 
 import Title from "components/Title";
 import MainLayout from "layouts/MainLayout";
@@ -19,8 +20,17 @@ const initialData = () => ({
   title: "",
 });
 
-const NewArticle = () => {
-  const [data, setData] = useState<Omit<Article, "id">>(initialData);
+const EditArticle = () => {
+  const router = useRouter();
+  const { query } = router;
+  const { articleId } = router.query;
+  const editRec: Omit<Article, "id"> = {
+    date: Number(query.date),
+    description: query.description as string,
+    title: query.title as string,
+  };
+
+  const [data, setData] = useState(editRec);
 
   const { title, description } = data;
 
@@ -38,7 +48,7 @@ const NewArticle = () => {
 
   const handleSaveClick = () => {
     addArticle(data).then(() => {
-      alert("Новая статься создана");
+      alert("Cтаться обновлена");
       setData(initialData);
     });
   };
@@ -87,7 +97,7 @@ const NewArticle = () => {
 
   return (
     <Box height="100%" px={10} py={5} sx={{ ".ql-container": { height: 300 } }}>
-      <Title mb={5}>Добавление новой статьи</Title>
+      <Title mb={5}>Редактирование статьи</Title>
       <Box mb={5}>
         <TextField
           name="title"
@@ -120,8 +130,8 @@ const NewArticle = () => {
   );
 };
 
-NewArticle.getLayout = (page: React.ReactElement) => (
+EditArticle.getLayout = (page: React.ReactElement) => (
   <MainLayout>{page}</MainLayout>
 );
 
-export default NewArticle;
+export default EditArticle;
