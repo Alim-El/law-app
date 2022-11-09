@@ -112,7 +112,38 @@ function MyApp({ Component, pageProps }: MyAppProps) {
   return (
     <>
       <Head>
-        <meta name="viewport" content="width=device-width, scale=1" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="keywords"
+          content="Штымов, штымов, штымов и партенры, адвокаты, юристы, закон, суд"
+        />
+        <meta name="author" content="Shtymov M. B." />
+        <meta
+          name="description"
+          content="Правозащитники «Штымов и партнеры» — личные помощники, партнеры, которые пройдут с вами сложный путь: от консультирования до завершения судебных этапов, моментально вступают в дело на любом этапе, помогая найти выход из патовых ситуаций."
+        />
+
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" />
       </Head>
 
       <CssVarsProvider theme={theme}>
