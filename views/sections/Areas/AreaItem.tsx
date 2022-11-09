@@ -6,7 +6,7 @@ const Wrapper = styled("div")`
   height: 440px;
   min-width: 300px;
   flex: 1 0 calc(33.33% - 20px);
-  margin: 0 10px;
+  margin: ${({ theme }) => theme.spacing(0, 1.25)};
   border: 1px solid #e4ecf0;
   box-shadow: 0px 24px 24px rgba(0, 72, 109, 0.2);
   border-radius: 2px;
@@ -14,6 +14,10 @@ const Wrapper = styled("div")`
   flex-direction: column;
   padding: 44px 36px 41px 33px;
   margin-top: ${({ theme }) => theme.spacing(6.25)} !important;
+
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    margin: 0;
+  }
 `;
 
 type Props = {
