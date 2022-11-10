@@ -174,7 +174,7 @@ const Header = () => {
             textColor="black"
             href="tel:+74951474046"
           >
-            +7 (495)-147-40-46
+            +7 (495) 147-40-46
           </StyledLink>
 
           <StyledLink href="welcome@shtymov.ru">welcome@shtymov.ru</StyledLink>
