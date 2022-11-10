@@ -6,10 +6,14 @@ import Request from "components/RequestConsultation";
 import Title from "components/Title";
 import Wrapper from "components/Wrapper";
 
+const bg =
+  "linear-gradient(to right, rgba(228, 236, 240, 0.85), rgba(228, 236, 240, 0.85)), url('./main-bg.jpeg') center / cover no-repeat";
+
 const MainSection = () => (
   <Box
     sx={{
-      background: "#E4ECF0",
+      background: [bg, bg, bg, "#E4ECF0"],
+      backgroundSize: "cover",
       maxHeight: 755,
       height: ["auto", "auto", "auto", 755],
       display: "flex",
