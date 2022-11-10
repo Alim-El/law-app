@@ -27,7 +27,7 @@ export default function SignIn() {
       (data.get("email") as string).toLowerCase() === email?.toLowerCase() &&
       data.get("password") === pass
     ) {
-      sessionStorage.setItem("authed", "true");
+      localStorage.setItem("authed", "true");
       router.push("/");
     } else {
       setError(true);

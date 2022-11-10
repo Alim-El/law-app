@@ -7,6 +7,7 @@ import Title from "components/Title";
 import Wrapper from "components/Wrapper";
 import MainLayout from "layouts/MainLayout";
 import { Article as TArticle } from "types";
+import deleteArticle from "utils/firebase/deleteArticle";
 import isAuthed from "utils/isAuthed";
 
 interface Props {
@@ -20,19 +21,26 @@ const Article = ({ article, previewMode = false }: Props) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const authed = isAuthed();
   const router = useRouter();
+  const { id } = router.query;
 
   const handleEditButtonClick = () => {
     const url = {
       pathname: "/edit-article",
       query: {
-        articleId: router.query.id,
+        articleId: id,
       },
     };
 
     router.push(url);
   };
 
-  const handleDeleteButtonClick = () => {};
+  const handleDeleteButtonClick = async () => {
+    deleteArticle(id as string).then(() => {
+      alert("Статья удалена");
+
+      router.push("/");
+    });
+  };
 
   return (
     <Wrapper
@@ -83,7 +91,9 @@ const Article = ({ article, previewMode = false }: Props) => {
         <NoSsr>
           <Stack spacing={5} direction="row" sx={{ mb: 5, mt: "auto" }}>
             <Button onClick={handleEditButtonClick}>Редактировать</Button>
-            <Button color="danger">Удалить</Button>
+            <Button color="danger" onClick={handleDeleteButtonClick}>
+              Удалить
+            </Button>
           </Stack>
         </NoSsr>
       )}

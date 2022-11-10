@@ -9,7 +9,7 @@ const WithFabButton = ({ children }: PropsWithChildren) => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const isAdmin =
-    typeof window !== "undefined" && sessionStorage.getItem("authed");
+    typeof window !== "undefined" && localStorage.getItem("authed");
 
   const handleClick = (path: string) => () => {
     setOpen(false);
