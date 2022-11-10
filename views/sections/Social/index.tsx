@@ -25,7 +25,7 @@ const Social = () => {
             стр. 19, офис: 375, 376 <br /> <br />
             <a href="tel:+74951474046">+7 (495) 147-40-46</a>
             <br />
-            <a href="welcome@shtymov.ru">welcome@shtymov.ru</a>
+            <a href="mailto:welcome@shtymov.ru">welcome@shtymov.ru</a>
             <br />
           </Typography>
         </Box>

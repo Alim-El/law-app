@@ -173,11 +173,27 @@ const Header = () => {
             underline="none"
             textColor="black"
             href="tel:+74951474046"
+            sx={{
+              ":hover:before": {
+                transformOrigin: "right",
+                transform: "scaleX(0)",
+              },
+            }}
           >
             +7 (495) 147-40-46
           </StyledLink>
 
-          <StyledLink href="welcome@shtymov.ru">welcome@shtymov.ru</StyledLink>
+          <StyledLink
+            sx={{
+              ":hover:before": {
+                transformOrigin: "right",
+                transform: "scaleX(0)",
+              },
+            }}
+            href="mailto:welcome@shtymov.ru"
+          >
+            welcome@shtymov.ru
+          </StyledLink>
         </Stack>
 
         <RequestConsultation
