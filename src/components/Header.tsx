@@ -107,9 +107,9 @@ const Header = () => {
             sx={{ display: ["none", "none", "none", "block"] }}
             underline="none"
             textColor="black"
-            href="tel:74951474046"
+            href="tel:+74951474046"
           >
-            7 (495) 147-4046
+            +7 (495) 147-40-46
           </StyledLink>
 
           <RequestConsultation
