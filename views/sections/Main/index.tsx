@@ -32,8 +32,22 @@ const MainSection = () => (
           flex: 1,
         }}
       >
-        <Title sx={{ textAlign: ["center", "center", "center", "left"] }}>
-          Юридическое бюро
+        <Title
+          sx={{
+            display: ["none", "block"],
+            textAlign: ["center", "center", "center", "left"],
+          }}
+        >
+          Юридическое Бюро {`"Штымов и Партнеры"`}
+        </Title>
+
+        <Title
+          sx={{
+            display: ["block", "none"],
+            textAlign: ["center", "center", "center", "left"],
+          }}
+        >
+          ЮБ {`"Штымов и Партнеры"`}
         </Title>
 
         <Description sx={{ textAlign: ["center", "center", "center", "left"] }}>
