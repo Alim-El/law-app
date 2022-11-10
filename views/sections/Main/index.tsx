@@ -11,6 +11,7 @@ const MainSection = () => (
     sx={{
       background: "#E4ECF0",
       maxHeight: 755,
+      height: ["auto", "auto", "auto", 755],
       display: "flex",
       flex: 1,
       maxWidth: "100vw",
@@ -25,14 +26,14 @@ const MainSection = () => (
       }}
     >
       <Stack
-        spacing={3.125}
+        spacing={6}
         sx={{
           width: ["100%", "100%", "100%", "50%"],
           flex: 1,
         }}
       >
         <Title sx={{ textAlign: ["center", "center", "center", "left"] }}>
-          Корпоративное юридическое представительство
+          Юридическое бюро
         </Title>
 
         <Description sx={{ textAlign: ["center", "center", "center", "left"] }}>
@@ -47,7 +48,7 @@ const MainSection = () => (
               alignSelf: ["center", "center", "center", "flex-start"],
 
               [`&.${buttonClasses.root}`]: {
-                mt: 4.375,
+                mt: 8,
               },
             },
           }}

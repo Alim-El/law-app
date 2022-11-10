@@ -21,7 +21,7 @@ const MainLayout = ({
       <Box sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
         <Header />
 
-        <Box sx={{ paddingTop: 13.5, flex: 1 }}>{children}</Box>
+        <Box sx={{ pt: 13.5, flex: 1 }}>{children}</Box>
 
         <Footer />
       </Box>

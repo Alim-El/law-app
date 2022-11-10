@@ -4,7 +4,7 @@ import { styled } from "@mui/joy/styles";
 
 const Wrapper = styled("div")`
   height: 440px;
-  min-width: 300px;
+  min-width: 100px;
   flex: 1 0 calc(33.33% - 20px);
   margin: ${({ theme }) => theme.spacing(0, 1.25)};
   border: 1px solid #e4ecf0;

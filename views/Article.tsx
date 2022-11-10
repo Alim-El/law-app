@@ -26,9 +26,6 @@ const Article = ({ article, previewMode = false }: Props) => {
       pathname: "/edit-article",
       query: {
         articleId: router.query.id,
-        title,
-        date,
-        description,
       },
     };
 
@@ -38,7 +35,11 @@ const Article = ({ article, previewMode = false }: Props) => {
   const handleDeleteButtonClick = () => {};
 
   return (
-    <Wrapper>
+    <Wrapper
+      height={previewMode ? "auto" : "100%"}
+      display="flex"
+      flexDirection="column"
+    >
       <Box display="flex" alignItems="center" justifyContent="space-between">
         <Title
           pb={5}
@@ -57,7 +58,11 @@ const Article = ({ article, previewMode = false }: Props) => {
       </Box>
 
       <div
-        style={{ textAlign: "justify", padding: isMobile ? "0 10px" : "none" }}
+        style={{
+          textAlign: "justify",
+          padding: isMobile ? "0 10px" : "0",
+          marginBottom: 40,
+        }}
         dangerouslySetInnerHTML={{ __html: description || "" }}
       />
 
@@ -65,7 +70,8 @@ const Article = ({ article, previewMode = false }: Props) => {
         textAlign="right"
         sx={{
           textAlign: "right",
-          my: 5,
+          mt: "auto",
+          mb: 5,
           mr: [2, 0],
           fontSize: (theme) => [theme.vars.fontSize.sm, theme.vars.fontSize.md],
         }}
@@ -75,7 +81,7 @@ const Article = ({ article, previewMode = false }: Props) => {
 
       {authed && !previewMode && (
         <NoSsr>
-          <Stack spacing={5} direction="row" sx={{ mb: 5 }}>
+          <Stack spacing={5} direction="row" sx={{ mb: 5, mt: "auto" }}>
             <Button onClick={handleEditButtonClick}>Редактировать</Button>
             <Button color="danger">Удалить</Button>
           </Stack>

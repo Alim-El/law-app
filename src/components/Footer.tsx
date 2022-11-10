@@ -10,9 +10,7 @@ const StyledFooter = styled("footer")`
 `;
 
 const Footer = () => (
-  <StyledFooter>
-    © {new Date().getFullYear()} McKinley Legal Template
-  </StyledFooter>
+  <StyledFooter>© {new Date().getFullYear()} Все права защищены.</StyledFooter>
 );
 
 export default Footer;

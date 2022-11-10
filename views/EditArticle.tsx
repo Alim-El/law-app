@@ -1,14 +1,26 @@
 import "react-quill/dist/quill.snow.css";
-import React, { ChangeEventHandler, useState } from "react";
-import { Box, Button, TextField, Typography } from "@mui/joy";
+import React, { ChangeEventHandler, useEffect, useState } from "react";
+import {
+  Box,
+  Button,
+  CircularProgress,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/joy";
+import { Collapse, Divider } from "@mui/material";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 
 import Title from "components/Title";
 import MainLayout from "layouts/MainLayout";
-import { Article } from "types";
-import { addArticle, storage } from "utils/firebase";
+import { storage } from "utils/firebase";
+import getArticleById from "utils/firebase/getArticleById";
+import updateArticle from "utils/firebase/updateArticle";
+
+import Article from "./Article";
+import ArticleItem from "./sections/Articles/ArticleItem";
 
 const Editor = dynamic(() => import("react-quill").then((mod) => mod), {
   ssr: false,
@@ -18,21 +30,20 @@ const initialData = () => ({
   date: new Date().getTime(),
   description: "",
   title: "",
+  image: "",
 });
 
 const EditArticle = () => {
   const router = useRouter();
   const { query } = router;
-  const { articleId } = router.query;
-  const editRec: Omit<Article, "id"> = {
-    date: Number(query.date),
-    description: query.description as string,
-    title: query.title as string,
-  };
+  const { articleId } = query;
 
-  const [data, setData] = useState(editRec);
+  const [loading, setLoading] = useState(true);
+  const [preview, setPreview] = useState(false);
 
-  const { title, description } = data;
+  const [data, setData] = useState(initialData);
+
+  const { title, description } = data || {};
 
   const handleChangeTextField: ChangeEventHandler<HTMLInputElement> = ({
     target,
@@ -46,15 +57,8 @@ const EditArticle = () => {
     setData({ ...data, [name]: value });
   };
 
-  const handleSaveClick = () => {
-    addArticle(data).then(() => {
-      alert("Cтаться обновлена");
-      setData(initialData);
-    });
-  };
-
   // State to store uploaded file
-  const [file, setFile] = useState<File>();
+  const [file, setFile] = useState<File | null>();
 
   // progress
   const [percent, setPercent] = useState(0);
@@ -62,6 +66,15 @@ const EditArticle = () => {
   // Handle file upload event and update state
   const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     setFile(event.target?.files?.[0]);
+  };
+
+  const handleSaveClick = () => {
+    updateArticle(articleId as string, data).then(() => {
+      alert("Cтаться обновлена");
+
+      setFile(null);
+      setPercent(0);
+    });
   };
 
   const handleUpload = () => {
@@ -89,43 +102,77 @@ const EditArticle = () => {
       () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          console.log(url);
+          setData((prevState) => ({ ...prevState, image: url }));
         });
       }
     );
   };
 
+  useEffect(() => {
+    articleId &&
+      getArticleById(articleId as string).then(({ id, ...data }) => {
+        setData(data);
+        setLoading(false);
+      });
+  }, [articleId]);
+
   return (
-    <Box height="100%" px={10} py={5} sx={{ ".ql-container": { height: 300 } }}>
-      <Title mb={5}>Редактирование статьи</Title>
-      <Box mb={5}>
-        <TextField
-          name="title"
-          onChange={handleChangeTextField}
-          value={title}
-          sx={{ mb: 5 }}
-          label="Заголовок"
-        />
-        <div>
-          <input type="file" onChange={handleChange} accept="/image/*" />
-          <button onClick={handleUpload}>Загрузить изображение</button>
-          {percent !== 0 && (
-            <Typography mt={1} textColor={percent === 100 ? "green" : "black"}>
-              {percent}% загружено
-            </Typography>
-          )}
-        </div>
-      </Box>
+    <Box px={10} py={5} sx={{ ".ql-container": { height: 300 } }}>
+      {loading ? (
+        <CircularProgress />
+      ) : (
+        <>
+          <Title mb={5}>Редактирование статьи</Title>
+          <Box mb={5}>
+            <TextField
+              name="title"
+              onChange={handleChangeTextField}
+              value={title}
+              sx={{ mb: 5 }}
+              label="Заголовок"
+            />
 
-      <Editor
-        theme="snow"
-        value={description}
-        onChange={handleChangeEditor("description")}
-      />
+            <div>
+              <input type="file" onChange={handleChange} accept="/image/*" />
+              <button onClick={handleUpload}>Загрузить изображение</button>
+              {percent !== 0 && (
+                <Typography
+                  mt={1}
+                  textColor={percent === 100 ? "green" : "black"}
+                >
+                  {percent}% загружено
+                </Typography>
+              )}
+            </div>
+          </Box>
 
-      <Button onClick={handleSaveClick} sx={{ mt: 5 }}>
-        Сохранить
-      </Button>
+          <Editor
+            theme="snow"
+            value={description}
+            onChange={handleChangeEditor("description")}
+          />
+
+          <Stack direction="row" sx={{ my: 5 }} spacing={1}>
+            <Button onClick={handleSaveClick}>Сохранить</Button>
+
+            <Button variant="outlined" onClick={() => setPreview(!preview)}>
+              Предпросмотр
+            </Button>
+          </Stack>
+
+          <Collapse in={preview}>
+            <Stack direction="row">
+              <ArticleItem animated={false} id="1" {...data} />
+              <ArticleItem animated={false} id="1" {...data} />
+              <ArticleItem animated={false} id="1" {...data} />
+            </Stack>
+
+            <Divider sx={{ my: 10 }} />
+
+            <Article previewMode article={{ ...data, id: "1" }} />
+          </Collapse>
+        </>
+      )}
     </Box>
   );
 };

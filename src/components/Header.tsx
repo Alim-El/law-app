@@ -107,9 +107,9 @@ const Header = () => {
             sx={{ display: ["none", "none", "none", "block"] }}
             underline="none"
             textColor="black"
-            href="tel:123-456-7890"
+            href="tel:74951474046"
           >
-            (123) 456-7890
+            7 (495) 147-4046
           </StyledLink>
 
           <RequestConsultation
@@ -149,7 +149,9 @@ const Header = () => {
             <CloseIcon />
           </IconButton>
         </Box>
+
         <Divider />
+
         <Stack sx={{ p: (theme) => theme.spacing(5, 15, 5, 5) }} spacing={3}>
           {routes.map(({ name, path }) => (
             <StyledLink
@@ -163,7 +165,21 @@ const Header = () => {
             </StyledLink>
           ))}
         </Stack>
+
         <Divider />
+
+        <Stack sx={{ mt: 3, ml: 2 }} spacing={1}>
+          <StyledLink
+            underline="none"
+            textColor="black"
+            href="tel:+74951474046"
+          >
+            +7 (495)-147-40-46
+          </StyledLink>
+
+          <StyledLink href="welcome@shtymov.ru">welcome@shtymov.ru</StyledLink>
+        </Stack>
+
         <RequestConsultation
           btnProps={{ sx: { alignSelf: "center", mt: "auto", mb: 2 } }}
         />
