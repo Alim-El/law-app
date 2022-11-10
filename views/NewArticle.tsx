@@ -1,13 +1,17 @@
 import "react-quill/dist/quill.snow.css";
 import React, { ChangeEventHandler, useState } from "react";
-import { Box, Button, TextField, Typography } from "@mui/joy";
+import { Box, Button, Stack, TextField, Typography } from "@mui/joy";
+import { Collapse, Divider } from "@mui/material";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import dynamic from "next/dynamic";
 
 import Title from "components/Title";
 import MainLayout from "layouts/MainLayout";
-import { Article } from "types";
+import { Article as ArticleType } from "types";
 import { addArticle, storage } from "utils/firebase";
+
+import Article from "./Article";
+import ArticleItem from "./sections/Articles/ArticleItem";
 
 const Editor = dynamic(() => import("react-quill").then((mod) => mod), {
   ssr: false,
@@ -17,10 +21,12 @@ const initialData = () => ({
   date: new Date().getTime(),
   description: "",
   title: "",
+  image: "",
 });
 
 const NewArticle = () => {
-  const [data, setData] = useState<Omit<Article, "id">>(initialData);
+  const [data, setData] = useState<Omit<ArticleType, "id">>(initialData);
+  const [preview, setPreview] = useState(false);
 
   const { title, description } = data;
 
@@ -36,15 +42,8 @@ const NewArticle = () => {
     setData({ ...data, [name]: value });
   };
 
-  const handleSaveClick = () => {
-    addArticle(data).then(() => {
-      alert("Новая статься создана");
-      setData(initialData);
-    });
-  };
-
   // State to store uploaded file
-  const [file, setFile] = useState<File>();
+  const [file, setFile] = useState<File | null>();
 
   // progress
   const [percent, setPercent] = useState(0);
@@ -54,9 +53,18 @@ const NewArticle = () => {
     setFile(event.target?.files?.[0]);
   };
 
+  const handleSaveClick = () => {
+    addArticle(data).then(() => {
+      alert("Новая статься создана");
+      setData(initialData);
+      setFile(null);
+      setPercent(0);
+    });
+  };
+
   const handleUpload = () => {
     if (!file) {
-      alert("Please upload an image first!");
+      alert("Сначала нужно загрузить изображение!");
     }
 
     const storageRef = ref(storage, `/${file?.name}`);
@@ -79,7 +87,7 @@ const NewArticle = () => {
       () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          console.log(url);
+          setData((prevState) => ({ ...prevState, image: url }));
         });
       }
     );
@@ -113,9 +121,25 @@ const NewArticle = () => {
         onChange={handleChangeEditor("description")}
       />
 
-      <Button onClick={handleSaveClick} sx={{ mt: 5 }}>
-        Сохранить
-      </Button>
+      <Stack direction="row" sx={{ my: 5 }} spacing={1}>
+        <Button onClick={handleSaveClick}>Сохранить</Button>
+
+        <Button variant="outlined" onClick={() => setPreview(!preview)}>
+          Предпросмотр
+        </Button>
+      </Stack>
+
+      <Collapse in={preview}>
+        <Stack direction="row">
+          <ArticleItem animated={false} id="1" {...data} />
+          <ArticleItem animated={false} id="1" {...data} />
+          <ArticleItem animated={false} id="1" {...data} />
+        </Stack>
+
+        <Divider sx={{ my: 10 }} />
+
+        <Article previewMode article={{ ...data, id: "1" }} />
+      </Collapse>
     </Box>
   );
 };

@@ -11,9 +11,10 @@ import isAuthed from "utils/isAuthed";
 
 interface Props {
   article: TArticle;
+  previewMode?: boolean;
 }
 
-const Article = ({ article }: Props) => {
+const Article = ({ article, previewMode = false }: Props) => {
   const { title, date, description } = article;
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -72,7 +73,7 @@ const Article = ({ article }: Props) => {
         {dayjs(date).format("MMMM DD, YYYY")}
       </Typography>
 
-      {authed && (
+      {authed && !previewMode && (
         <NoSsr>
           <Stack spacing={5} direction="row" sx={{ mb: 5 }}>
             <Button onClick={handleEditButtonClick}>Редактировать</Button>

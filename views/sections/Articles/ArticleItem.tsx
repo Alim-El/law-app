@@ -22,13 +22,16 @@ const ArticleItem = ({
   title,
   date,
   id,
+  image,
   animated,
 }: Article & { animated: boolean }) => {
   return (
     <Wrapper data-aos={animated && "fade-up"} data-aos-once="true">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="https://source.unsplash.com/random/?h=260&productivity,law"
+        src={
+          image || "https://source.unsplash.com/random/?h=260&productivity,law"
+        }
         alt="tets"
         style={{ flex: 1, maxHeight: 260, minHeight: 260 }}
       />
