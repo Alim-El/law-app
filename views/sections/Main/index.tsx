@@ -34,13 +34,21 @@ const MainSection = () => (
       >
         <Title
           sx={{
-            display: ["none", "block"],
+            display: ["none", "none", "none", "block"],
             textAlign: ["center", "center", "center", "left"],
           }}
         >
           Юридическое Бюро {`"Штымов и Партнеры"`}
         </Title>
 
+        <Title
+          sx={{
+            display: ["none", "none", "block", "none"],
+            textAlign: ["center", "center", "center", "left"],
+          }}
+        >
+          Юридическое Бюро <br /> {`"Штымов и Партнеры"`}
+        </Title>
         <Title
           sx={{
             display: ["block", "none"],
