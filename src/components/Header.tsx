@@ -168,30 +168,16 @@ const Header = () => {
 
         <Divider />
 
-        <Stack sx={{ mt: 3, ml: 2 }} spacing={1}>
+        <Stack sx={{ mt: 3, ml: 2, mr: "auto" }} spacing={1}>
           <StyledLink
             underline="none"
             textColor="black"
             href="tel:+74951474046"
-            sx={{
-              ":hover:before": {
-                transformOrigin: "right",
-                transform: "scaleX(0)",
-              },
-            }}
           >
             +7 (495) 147-40-46
           </StyledLink>
 
-          <StyledLink
-            sx={{
-              ":hover:before": {
-                transformOrigin: "right",
-                transform: "scaleX(0)",
-              },
-            }}
-            href="mailto:welcome@shtymov.ru"
-          >
+          <StyledLink underline="none" href="mailto:welcome@shtymov.ru">
             welcome@shtymov.ru
           </StyledLink>
         </Stack>
