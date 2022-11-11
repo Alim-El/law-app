@@ -70,6 +70,8 @@ const Article = ({ article, previewMode = false }: Props) => {
           textAlign: "justify",
           padding: isMobile ? "0 10px" : "0",
           marginBottom: 40,
+          wordBreak: "break-word",
+          overflow: "hidden",
         }}
         dangerouslySetInnerHTML={{ __html: description || "" }}
       />
