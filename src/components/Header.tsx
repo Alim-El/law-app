@@ -89,7 +89,7 @@ const Header = () => {
             <StyledLink
               underline="none"
               textColor="#00486D"
-              href={`/#${path}`}
+              href={path}
               key={path}
               sx={{ display: ["none", "none", "none", "block"] }}
             >
@@ -157,7 +157,7 @@ const Header = () => {
             <StyledLink
               underline="none"
               textColor="#00486D"
-              href={`/#${path}`}
+              href={path}
               key={path}
               onClick={handleClose}
             >

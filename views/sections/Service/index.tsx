@@ -51,7 +51,7 @@ const Service = () => {
             },
           }}
         >
-          О нашей фирме
+          О нашем бюро
         </Button>
       </Box>
     </Wrapper>

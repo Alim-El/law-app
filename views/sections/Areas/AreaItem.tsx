@@ -30,21 +30,11 @@ type Props = {
 const AreaItem = ({ title, description, icon, animated }: Props) => {
   return (
     <Wrapper data-aos={animated && "fade-up"} data-aos-once="true">
-      {
-        <div
-          style={{
-            display: "flex",
-            alignItems: "flex-end",
-            height: 64,
-          }}
-        >
-          {icon}
-        </div>
-      }
+      {icon}
 
       <Typography
         textColor="#00486D"
-        mt={5}
+        mt={3}
         fontSize={(theme) => theme.fontSize.xl}
       >
         {title}
@@ -55,7 +45,13 @@ const AreaItem = ({ title, description, icon, animated }: Props) => {
         mt={1.5}
         textColor="#00486D"
         mb="auto"
-        fontSize={(theme) => theme.fontSize.lg}
+        fontSize={(theme) => theme.fontSize.sm}
+        whiteSpace="pre-wrap"
+        sx={(theme) => ({
+          [theme.breakpoints.down(1300)]: {
+            overflow: "scroll",
+          },
+        })}
       >
         {description}
       </Typography>

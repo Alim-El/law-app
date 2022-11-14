@@ -1,37 +1,45 @@
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import CarCrashIcon from "@mui/icons-material/CarCrash";
+import GavelIcon from "@mui/icons-material/Gavel";
+import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import { Box } from "@mui/joy";
 import AOS from "aos";
 import { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { BookIcon, BuildingIcon, WebIcon } from "assets/img";
 import Description from "components/Description";
 import Title from "components/Title";
 import Wrapper from "components/Wrapper";
 
 import AreaItem from "./AreaItem";
 
+const sx = { width: 50, height: 50, fill: "#00486D" };
+
 const areas = [
   {
-    icon: <WebIcon />,
-    title: "Интеллектуальная собственность",
-    description:
-      "Право интеллектуальной собственности имеет дело с законами о защите создателей и владельцев изобретений, письменных работ, музыки, дизайна и других произведений.",
+    icon: <GavelIcon sx={sx} />,
+    title: "Полный спектр правовых инструментов для защиты клиентов:",
+    description: `—  Предоставление правовых консультаций по различным юридическим вопросам;
+—  Подготовка исковых заявлений, ходатайств, жалоб, обращений, запросов, требований и других юридических документов;
+—  Представление интересов граждан во всех судебных и правоохранительных учреждениях при разбирательствах административных, гражданских и уголовных дел;`,
   },
 
   {
-    icon: <BuildingIcon />,
-    title: "Недвижимость",
-    description:
-      "Право недвижимости - это отрасль гражданского права, которая охватывает право владения, пользования и пользования землей.",
+    icon: <SupportAgentIcon sx={sx} />,
+    title:
+      "Абонентное юридическое обслуживание бизнеса с личным юристом и бухгалтером:",
+    description: `— Подбираем индивидуальный тариф для Ваших юридических потребностей;
+— При необходимости выезжаем к своим клиентам в течение часа;
+— Регулярная отчетность о проделанной юридической работе;`,
   },
 
   {
-    icon: <BookIcon />,
-    title: "Налоговое право",
-    description:
-      "Налоговое законодательство охватывает подоходный, корпоративный, акцизный, налог на роскошь, налог на имущество и другие виды налогов.",
+    icon: <CarCrashIcon sx={sx} />,
+    title: "Страховые споры - защита прав при ДТП:",
+    description: `— Ведение дела по ДТП с пострадавшими;	
+— Ведение дела по ДТП со смертельным исходом;	
+— Ведение дела по ДТП с наездом на пешехода;`,
   },
 ];
 

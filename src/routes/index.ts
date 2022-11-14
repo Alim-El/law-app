@@ -1,19 +1,19 @@
 const routes = [
   {
     name: "Деятельность",
-    path: "areas",
-  },
-  {
-    name: "О нас",
-    path: "about",
+    path: "/#areas",
   },
   {
     name: "Статьи",
-    path: "articles",
+    path: "/#articles",
   },
   {
     name: "Контакты",
-    path: "contacts",
+    path: "/#contacts",
+  },
+  {
+    name: "О нас",
+    path: "/about-us",
   },
 ];
 
