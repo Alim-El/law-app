@@ -7,7 +7,7 @@ import Title from "components/Title";
 import Wrapper from "components/Wrapper";
 
 const bg =
-  "linear-gradient(to right, rgba(228, 236, 240, 0.85), rgba(228, 236, 240, 0.85)), url('./main-bg.jpeg') center / cover no-repeat";
+  "linear-gradient(to right, rgba(228, 236, 240, 0.85), rgba(228, 236, 240, 0.85)), url('./shtymov.jpg') top / cover no-repeat";
 
 const MainSection = () => (
   <Box
@@ -47,7 +47,7 @@ const MainSection = () => (
 
         <Title
           sx={{
-            display: ["none", "none", "block", "none"],
+            display: ["none", "block", "block", "none"],
             textAlign: ["center", "center", "center", "left"],
           }}
         >
