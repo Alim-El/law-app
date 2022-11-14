@@ -17,7 +17,6 @@ const AboutUs = () => {
             theme.vars.fontSize.xl3,
             theme.vars.fontSize.xl4,
           ],
-          px: [1.25, 0],
           textAlign: "left",
           mb: 5,
         }}
