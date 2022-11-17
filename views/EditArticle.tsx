@@ -20,7 +20,7 @@ import getArticleById from "utils/firebase/getArticleById";
 import updateArticle from "utils/firebase/updateArticle";
 
 import Article from "./Article";
-import ArticleItem from "./sections/Articles/ArticleItem";
+import ArticleItem from "./Home/sections/Articles/ArticleItem";
 
 const Editor = dynamic(() => import("react-quill").then((mod) => mod), {
   ssr: false,

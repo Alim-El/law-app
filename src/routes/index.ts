@@ -12,8 +12,8 @@ const routes = [
     path: "/about-us",
   },
   {
-    name: "Контакты",
-    path: "/#contacts",
+    name: "Команда",
+    path: "/people",
   },
 ];
 

@@ -11,7 +11,7 @@ import { Article as ArticleType } from "types";
 import { addArticle, storage } from "utils/firebase";
 
 import Article from "./Article";
-import ArticleItem from "./sections/Articles/ArticleItem";
+import ArticleItem from "./Home/sections/Articles/ArticleItem";
 
 const Editor = dynamic(() => import("react-quill").then((mod) => mod), {
   ssr: false,
