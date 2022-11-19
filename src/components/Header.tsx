@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useRef } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
+import TelegramIcon from "@mui/icons-material/Telegram";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { Box, IconButton, Link, Stack } from "@mui/joy";
 import { styled } from "@mui/joy/styles";
 import { Divider, Drawer } from "@mui/material";
@@ -11,7 +13,7 @@ import NextLink from "next/link";
 
 import routes from "routes";
 
-import RequestConsultation from "./RequestConsultation";
+// import RequestConsultation from "./RequestConsultation";
 
 const StyledHeader = styled(motion.header)(({ theme }) => ({
   width: "100%",
@@ -91,7 +93,11 @@ const Header = () => {
               textColor="#00486D"
               href={path}
               key={path}
-              sx={{ display: ["none", "none", "none", "block"] }}
+              sx={(theme) => ({
+                [theme.breakpoints.down(1240)]: {
+                  display: "none",
+                },
+              })}
             >
               {name}
             </StyledLink>
@@ -100,11 +106,17 @@ const Header = () => {
 
         <Stack
           direction="row"
-          sx={{ alignItems: "center", ml: "auto" }}
+          sx={(theme) => ({
+            alignItems: "center",
+            ml: "auto",
+
+            [theme.breakpoints.down(1240)]: {
+              display: "none",
+            },
+          })}
           spacing={4}
         >
           <StyledLink
-            sx={{ display: ["none", "none", "none", "block"] }}
             underline="none"
             textColor="black"
             href="tel:+74951474046"
@@ -112,18 +124,45 @@ const Header = () => {
             +7 (495) 147-40-46
           </StyledLink>
 
-          <RequestConsultation
-            btnProps={{ sx: { display: ["none", "none", "block", "block"] } }}
-          />
+          <IconButton
+            variant="outlined"
+            color="success"
+            component="a"
+            href="https://wa.me/79264527777"
+            target="_blank"
+          >
+            <WhatsAppIcon /> &shy; WhatsApp
+          </IconButton>
 
           <IconButton
-            onClick={() => setOpenDrawer(!openDrawer)}
-            sx={{ display: ["block", "block", "block", "none"] }}
+            variant="outlined"
+            component="a"
+            href="https://t.me/+79264527777"
+            target="_blank"
           >
-            <MenuIcon />
+            <TelegramIcon /> &shy; Telegram
           </IconButton>
+
+          {/* <RequestConsultation
+            btnProps={{ sx: { display: ["none", "none", "block", "block"] } }}
+          /> */}
         </Stack>
       </Box>
+
+      <IconButton
+        onClick={() => setOpenDrawer(!openDrawer)}
+        sx={(theme) => ({
+          display: "none",
+          alignSelf: "center",
+
+          [theme.breakpoints.down(1240)]: {
+            display: "block",
+          },
+        })}
+      >
+        <MenuIcon />
+      </IconButton>
+
       <Drawer
         open={openDrawer}
         onClose={handleClose}
@@ -136,10 +175,6 @@ const Header = () => {
           justifyContent="space-between"
           pl={2}
         >
-          {/* <Typography level="h3" textColor="#00486D" component="span">
-            Меню
-          </Typography> */}
-
           <Image alt="logo-mini" src="/logo.svg" height={30} width={150} />
 
           <IconButton
@@ -182,9 +217,30 @@ const Header = () => {
           </StyledLink>
         </Stack>
 
-        <RequestConsultation
+        <Box sx={{ p: 2, display: "flex", justifyContent: "space-between" }}>
+          <IconButton
+            variant="outlined"
+            color="success"
+            component="a"
+            href="https://wa.me/79264527777"
+            target="_blank"
+          >
+            <WhatsAppIcon /> &shy; WhatsApp
+          </IconButton>
+
+          <IconButton
+            variant="outlined"
+            component="a"
+            href="https://t.me/+79264527777"
+            target="_blank"
+          >
+            <TelegramIcon /> &shy; Telegram
+          </IconButton>
+        </Box>
+
+        {/* <RequestConsultation
           btnProps={{ sx: { alignSelf: "center", mt: "auto", mb: 2 } }}
-        />
+        /> */}
       </Drawer>
     </StyledHeader>
   );

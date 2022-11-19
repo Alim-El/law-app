@@ -97,7 +97,7 @@ export default function RequestConsultation({ btnProps = {} }: Props) {
                 type="tel"
                 placeholder="+7 (___) ___ __ __"
               />
-              <Button type="submit">Submit</Button>
+              <Button type="submit">Отправить запрос</Button>
             </Stack>
           </form>
         </ModalDialog>
