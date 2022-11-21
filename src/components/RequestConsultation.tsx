@@ -1,11 +1,13 @@
 import * as React from "react";
-import { ModalClose } from "@mui/joy";
+import TelegramIcon from "@mui/icons-material/Telegram";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import { IconButton, Link, ModalClose } from "@mui/joy";
 import Button, { ButtonProps } from "@mui/joy/Button";
 import Modal from "@mui/joy/Modal";
 import ModalDialog from "@mui/joy/ModalDialog";
 import Stack from "@mui/joy/Stack";
-import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
+import { Divider } from "@mui/material";
 import { motion } from "framer-motion";
 
 interface Props {
@@ -71,35 +73,55 @@ export default function RequestConsultation({ btnProps = {} }: Props) {
             component="h2"
             level="inherit"
             fontSize="1.25em"
-            mb="0.25em"
+            mb="0.5em"
           >
             Запросить консультацию
           </Typography>
-          <Typography
-            id="basic-modal-dialog-description"
-            mt={0.5}
-            mb={2}
-            textColor="text.tertiary"
-          >
-            Введите свои данные
-          </Typography>
-          <form
-            onSubmit={(event) => {
-              event.preventDefault();
-              setOpen(false);
-            }}
-          >
-            <Stack spacing={2}>
-              <TextField label="Имя" autoFocus required />
-              <TextField
-                label="Номер"
-                required
-                type="tel"
-                placeholder="+7 (___) ___ __ __"
-              />
-              <Button type="submit">Отправить запрос</Button>
+
+          <Stack spacing={2}>
+            <div>
+              <Typography level="body4" textTransform="uppercase">
+                телефон
+              </Typography>
+
+              <Link underline="none" textColor="black" href="tel:+74951474046">
+                +7 (495) 147-40-46
+              </Link>
+            </div>
+
+            <div>
+              <Typography level="body4" textTransform="uppercase">
+                e-mail
+              </Typography>
+
+              <Link underline="none" href="mailto:welcome@shtymov.ru">
+                welcome@shtymov.ru
+              </Link>
+            </div>
+
+            <Divider />
+
+            <Stack direction="row" sx={{ justifyContent: "space-between" }}>
+              <IconButton
+                variant="outlined"
+                color="success"
+                component="a"
+                href="https://wa.me/79264527777"
+                target="_blank"
+              >
+                <WhatsAppIcon /> &shy; WhatsApp
+              </IconButton>
+
+              <IconButton
+                variant="outlined"
+                component="a"
+                href="https://t.me/+79264527777"
+                target="_blank"
+              >
+                <TelegramIcon /> &shy; Telegram
+              </IconButton>
             </Stack>
-          </form>
+          </Stack>
         </ModalDialog>
       </Modal>
     </React.Fragment>
