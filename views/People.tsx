@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography } from "@mui/joy";
+import { Box, Typography } from "@mui/joy";
 import { Avatar, Stack } from "@mui/joy";
 import { Divider } from "@mui/material";
 
@@ -9,14 +9,41 @@ import Wrapper from "components/Wrapper";
 import MainLayout from "layouts/MainLayout";
 
 const SwiperItem = () => (
-  <Stack direction="row" spacing={[1, 10]} sx={{ width: "100%" }}>
-    <Avatar src="./2.jpg" sx={{ height: 250, width: 250 }} />
+  <Box
+    sx={(theme) => ({
+      width: "100%",
+      display: "flex",
+      alignItems: "center",
+
+      ".avatar": {
+        mr: 5,
+      },
+
+      [theme.breakpoints.down(650)]: {
+        flexDirection: "column",
+        alignItems: "flex-start",
+
+        ".avatar": {
+          mr: 0,
+          mb: 5,
+        },
+      },
+    })}
+  >
+    <Avatar
+      src="./avatar.jpg"
+      className="avatar"
+      sx={{ height: 240, width: 240 }}
+    />
+
     <Stack spacing={2}>
-      <Typography level="body4">ОСНОВАТЕЛЬ, УПРАВЛЯЮЩИЙ ПАРТНЕР</Typography>
+      <div>
+        <Typography level="body4">ОСНОВАТЕЛЬ, УПРАВЛЯЮЩИЙ ПАРТНЕР</Typography>
 
-      <Typography level="body1">Мурат Борисович Штымов</Typography>
+        <Typography level="body1">Мурат Борисович Штымов</Typography>
+      </div>
 
-      <Stack direction="row" spacing={5}>
+      <Stack direction="row" spacing={4}>
         <div>
           <Typography level="body4" textTransform="uppercase">
             e-mail
@@ -43,7 +70,7 @@ const SwiperItem = () => (
         <br />
       </Typography>
     </Stack>
-  </Stack>
+  </Box>
 );
 
 const People = () => {
