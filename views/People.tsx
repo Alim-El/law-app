@@ -26,6 +26,7 @@ const SwiperItem = () => (
         ".avatar": {
           mr: 0,
           mb: 5,
+          alignSelf: "center",
         },
       },
     })}
