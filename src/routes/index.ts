@@ -5,7 +5,7 @@ const routes = [
   },
   {
     name: "Статьи",
-    path: "/#articles",
+    path: "/articles",
   },
   {
     name: "О нас",

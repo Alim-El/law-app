@@ -1,5 +1,6 @@
 import { Box, Link as MuiLink, linkClasses, Typography } from "@mui/joy";
 import { styled } from "@mui/joy/styles";
+import { SxProps } from "@mui/joy/styles/types";
 import dayjs from "dayjs";
 import Link from "next/link";
 
@@ -24,9 +25,10 @@ const ArticleItem = ({
   id,
   image,
   animated,
-}: Article & { animated: boolean }) => {
+  sx,
+}: Article & { animated: boolean; sx?: SxProps }) => {
   return (
-    <Wrapper data-aos={animated && "fade-up"} data-aos-once="true">
+    <Wrapper data-aos={animated && "fade-up"} data-aos-once="true" sx={sx}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={
