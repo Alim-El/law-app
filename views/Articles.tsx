@@ -27,7 +27,7 @@ const Articles = ({
       <Box sx={{ display: "flex", flexWrap: "wrap" }}>
         {docs.map((props) => (
           <DocItem
-            sx={{ width: [300, 400], flex: "none" }}
+            sx={{ width: ["none", 400], flex: "none" }}
             animated={true}
             key={props.id}
             path="articles"
