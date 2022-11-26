@@ -25,10 +25,16 @@ const Cases = ({
     <Wrapper sx={{ display: "flex", flexDirection: "column", pb: 5 }}>
       <Title>Кейсы</Title>
 
-      <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: ["center", "center", "flex-start"],
+        }}
+      >
         {docs.map((props) => (
           <DocItem
-            sx={{ width: [300, 400], flex: "none" }}
+            sx={{ width: ["none", 400], flex: [1, "none"] }}
             animated={true}
             key={props.id}
             path="cases"
