@@ -9,7 +9,7 @@ export { default } from "../../views/Article";
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { query } = ctx;
   const articleId = query.id;
-  const article = await getArticleById(articleId as string);
+  const article = await getArticleById("articles", articleId as string);
 
   return {
     props: {
