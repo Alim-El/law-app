@@ -24,7 +24,7 @@ const initialData = () => ({
   image: "",
 });
 
-const NewArticle = () => {
+const NewCase = () => {
   const [data, setData] = useState<Omit<ArticleType, "id">>(initialData);
   const [preview, setPreview] = useState(false);
 
@@ -54,8 +54,8 @@ const NewArticle = () => {
   };
 
   const handleSaveClick = () => {
-    addArticle("articles", data).then(() => {
-      alert("Новая статься создана");
+    addArticle("cases", data).then(() => {
+      alert("Новый кейс создана");
       setData(initialData);
       setFile(null);
       setPercent(0);
@@ -95,7 +95,7 @@ const NewArticle = () => {
 
   return (
     <Box height="100%" px={10} py={5} sx={{ ".ql-container": { height: 300 } }}>
-      <Title mb={5}>Добавление новой статьи</Title>
+      <Title mb={5}>Добавление нового кейса</Title>
       <Box mb={5}>
         <TextField
           name="title"
@@ -131,9 +131,9 @@ const NewArticle = () => {
 
       <Collapse in={preview}>
         <Stack direction="row">
-          <DocItem path="articles" animated={false} id="1" {...data} />
-          <DocItem path="articles" animated={false} id="1" {...data} />
-          <DocItem path="articles" animated={false} id="1" {...data} />
+          <DocItem path="cases" animated={false} id="1" {...data} />
+          <DocItem path="cases" animated={false} id="1" {...data} />
+          <DocItem path="cases" animated={false} id="1" {...data} />
         </Stack>
 
         <Divider sx={{ my: 10 }} />
@@ -144,8 +144,8 @@ const NewArticle = () => {
   );
 };
 
-NewArticle.getLayout = (page: React.ReactElement) => (
+NewCase.getLayout = (page: React.ReactElement) => (
   <MainLayout>{page}</MainLayout>
 );
 
-export default NewArticle;
+export default NewCase;

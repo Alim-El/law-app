@@ -4,6 +4,10 @@ const routes = [
     path: "/#areas",
   },
   {
+    name: "Кейсы",
+    path: "/cases",
+  },
+  {
     name: "Статьи",
     path: "/articles",
   },

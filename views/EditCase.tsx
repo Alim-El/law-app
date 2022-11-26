@@ -33,7 +33,7 @@ const initialData = () => ({
   image: "",
 });
 
-const EditArticle = () => {
+const EditCase = () => {
   const router = useRouter();
   const { query } = router;
   const { articleId } = query;
@@ -69,8 +69,8 @@ const EditArticle = () => {
   };
 
   const handleSaveClick = () => {
-    updateArticle("articles", articleId as string, data).then(() => {
-      alert("Cтаться обновлена");
+    updateArticle("cases", articleId as string, data).then(() => {
+      alert("Кейс обновлен");
 
       setFile(null);
       setPercent(0);
@@ -110,12 +110,10 @@ const EditArticle = () => {
 
   useEffect(() => {
     articleId &&
-      getArticleById("articles", articleId as string).then(
-        ({ id, ...data }) => {
-          setData(data);
-          setLoading(false);
-        }
-      );
+      getArticleById("cases", articleId as string).then(({ id, ...data }) => {
+        setData(data);
+        setLoading(false);
+      });
   }, [articleId]);
 
   return (
@@ -124,7 +122,7 @@ const EditArticle = () => {
         <CircularProgress />
       ) : (
         <>
-          <Title mb={5}>Редактирование статьи</Title>
+          <Title mb={5}>Редактирование кейса</Title>
           <Box mb={5}>
             <TextField
               name="title"
@@ -164,9 +162,9 @@ const EditArticle = () => {
 
           <Collapse in={preview}>
             <Stack direction="row">
-              <DocItem path="articles" animated={false} id="1" {...data} />
-              <DocItem path="articles" animated={false} id="1" {...data} />
-              <DocItem path="articles" animated={false} id="1" {...data} />
+              <DocItem path="cases" animated={false} id="1" {...data} />
+              <DocItem path="cases" animated={false} id="1" {...data} />
+              <DocItem path="cases" animated={false} id="1" {...data} />
             </Stack>
 
             <Divider sx={{ my: 10 }} />
@@ -179,8 +177,8 @@ const EditArticle = () => {
   );
 };
 
-EditArticle.getLayout = (page: React.ReactElement) => (
+EditCase.getLayout = (page: React.ReactElement) => (
   <MainLayout>{page}</MainLayout>
 );
 
-export default EditArticle;
+export default EditCase;

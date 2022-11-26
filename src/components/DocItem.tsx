@@ -19,21 +19,20 @@ const Wrapper = styled("div")`
   margin-top: ${({ theme }) => theme.spacing(6.25)} !important;
 `;
 
-const ArticleItem = ({
+const DocItem = ({
   title,
   date,
   id,
   image,
   animated,
   sx,
-}: Article & { animated: boolean; sx?: SxProps }) => {
+  path,
+}: Article & { animated: boolean; sx?: SxProps; path: string }) => {
   return (
     <Wrapper data-aos={animated && "fade-up"} data-aos-once="true" sx={sx}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={
-          image || "https://source.unsplash.com/random/?h=260&productivity,law"
-        }
+        src={image || "./article.svg"}
         alt="tets"
         style={{ flex: 1, maxHeight: 260, minHeight: 260 }}
       />
@@ -67,7 +66,7 @@ const ArticleItem = ({
           {title}
         </Typography>
 
-        <Link href={`articles/${id}`} passHref>
+        <Link href={`${path}/${id}`} passHref>
           <MuiLink
             sx={{
               display: "flex",
@@ -92,4 +91,4 @@ const ArticleItem = ({
   );
 };
 
-export default ArticleItem;
+export default DocItem;

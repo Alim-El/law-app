@@ -2,6 +2,7 @@
 import "swiper/css";
 import "swiper/css/pagination";
 import { useEffect, useState } from "react";
+import DocItem from "@components/DocItem";
 import { Box, Button, CircularProgress, useTheme } from "@mui/joy";
 import { useMediaQuery } from "@mui/material";
 // import required modules
@@ -12,8 +13,6 @@ import Title from "components/Title";
 import Wrapper from "components/Wrapper";
 import { Article } from "types";
 import { getArticles } from "utils/firebase";
-
-import ArticleItem from "./ArticleItem";
 
 const Articles = () => {
   const theme = useTheme();
@@ -36,7 +35,7 @@ const Articles = () => {
   };
 
   useEffect(() => {
-    getArticles(limit).then((data) => {
+    getArticles(limit, "articles").then((data) => {
       setData(data);
       setLoading(false);
     });
@@ -57,7 +56,7 @@ const Articles = () => {
         }}
       >
         {articles.map((props) => (
-          <ArticleItem animated={true} key={props.id} {...props} />
+          <DocItem path="articles" animated={true} key={props.id} {...props} />
         ))}
       </Box>
 
@@ -70,7 +69,7 @@ const Articles = () => {
         >
           {articles.map((props) => (
             <SwiperSlide key={props.id}>
-              <ArticleItem animated={false} {...props} />
+              <DocItem path="articles" animated={false} {...props} />
             </SwiperSlide>
           ))}
         </Swiper>

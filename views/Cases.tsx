@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import DocItem from "@components/DocItem";
 import { Box, Button } from "@mui/joy";
 
 import Title from "components/Title";
@@ -8,7 +7,9 @@ import useDocs from "data/useDocs";
 import MainLayout from "layouts/MainLayout";
 import { Article } from "types";
 
-const Articles = ({
+import DocItem from "../src/components/DocItem";
+
+const Cases = ({
   articles,
   total: initialTotal,
 }: {
@@ -18,11 +19,11 @@ const Articles = ({
   const [counter, setCounter] = useState(15);
   const {
     data: { docs, total },
-  } = useDocs("articles", counter, { docs: articles, total: initialTotal });
+  } = useDocs("cases", counter, { docs: articles, total: initialTotal });
 
   return (
     <Wrapper sx={{ display: "flex", flexDirection: "column", pb: 5 }}>
-      <Title>Статьи</Title>
+      <Title>Кейсы</Title>
 
       <Box sx={{ display: "flex", flexWrap: "wrap" }}>
         {docs.map((props) => (
@@ -30,7 +31,7 @@ const Articles = ({
             sx={{ width: [300, 400], flex: "none" }}
             animated={true}
             key={props.id}
-            path="articles"
+            path="cases"
             {...props}
           />
         ))}
@@ -39,7 +40,7 @@ const Articles = ({
       {total > counter && (
         <Button
           sx={{ alignSelf: "center", mt: 5 }}
-          onClick={() => setCounter(counter + 15)}
+          onClick={() => setCounter(counter + 1)}
           variant="outlined"
         >
           Загрузить еще...
@@ -49,8 +50,8 @@ const Articles = ({
   );
 };
 
-Articles.getLayout = (page: React.ReactElement) => (
-  <MainLayout title="Статьи">{page}</MainLayout>
+Cases.getLayout = (page: React.ReactElement) => (
+  <MainLayout title="Кейсы">{page}</MainLayout>
 );
 
-export default Articles;
+export default Cases;

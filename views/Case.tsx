@@ -14,7 +14,7 @@ const Article = ({ article, previewMode = false }: Props) => (
     display="flex"
     flexDirection="column"
   >
-    <DocView article={article} previewMode={previewMode} path={"/articles"} />
+    <DocView article={article} previewMode={previewMode} path={"/cases"} />
   </Wrapper>
 );
 

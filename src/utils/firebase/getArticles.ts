@@ -3,8 +3,8 @@ import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
 import { Article } from "types";
 import { db } from "utils/firebase";
 
-const getArticles = async (qLimit: number) => {
-  const articlesRef = collection(db, "articles");
+const getArticles = async (qLimit: number, path: string) => {
+  const articlesRef = collection(db, path);
   const q = query(articlesRef, orderBy("date", "desc"), limit(qLimit));
   const querySnapshot = await getDocs(q);
 

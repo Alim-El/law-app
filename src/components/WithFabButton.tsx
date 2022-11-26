@@ -31,7 +31,7 @@ const WithFabButton = ({ children }: PropsWithChildren) => {
             <Collapse in={open} timeout={{ exit: 0, enter: 500 }}>
               <Stack spacing={2} sx={{ mb: 2 }}>
                 <Fab
-                  onClick={handleClick("/new")}
+                  onClick={handleClick("/new-case")}
                   variant="extended"
                   size="large"
                   color="primary"

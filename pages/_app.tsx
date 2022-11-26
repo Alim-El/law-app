@@ -13,6 +13,7 @@ import updateLocale from "dayjs/plugin/updateLocale";
 import { NextPage } from "next";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { SWRConfig } from "swr";
 
 import ProgressBar from "components/ProgressBar";
 import WithFabButton from "components/WithFabButton";
@@ -150,7 +151,9 @@ function MyApp({ Component, pageProps }: MyAppProps) {
         <ProgressBar />
         <CssBaseline />
 
-        <WithFabButton>{getLayout(<Component {...pageProps} />)}</WithFabButton>
+        <WithFabButton>
+          <SWRConfig>{getLayout(<Component {...pageProps} />)}</SWRConfig>
+        </WithFabButton>
       </CssVarsProvider>
     </>
   );

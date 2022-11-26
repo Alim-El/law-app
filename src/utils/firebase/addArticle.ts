@@ -3,9 +3,9 @@ import { addDoc, collection } from "firebase/firestore";
 import { Article } from "types";
 import { db } from "utils/firebase";
 
-const addArticle = async (data: Omit<Article, "id">) => {
+const addArticle = async (path: string, data: Omit<Article, "id">) => {
   try {
-    const artcilesRef = collection(db, "articles");
+    const artcilesRef = collection(db, path);
 
     const docRef = await addDoc(artcilesRef, data);
 
