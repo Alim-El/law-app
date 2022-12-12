@@ -32,20 +32,20 @@ const AreaItem = ({ title, description, icon, animated }: Props) => {
     <Wrapper data-aos={animated && "fade-up"} data-aos-once="true">
       {icon}
 
-      <Typography
+      {/* <Typography
         textColor="#00486D"
         mt={3}
         fontSize={(theme) => theme.fontSize.xl}
       >
         {title}
-      </Typography>
+      </Typography> */}
 
       <Typography
         component="div"
         mt={1.5}
         textColor="#00486D"
         mb="auto"
-        fontSize={(theme) => theme.fontSize.sm}
+        fontSize={(theme) => theme.fontSize.md}
         whiteSpace="pre-wrap"
         sx={(theme) => ({
           [theme.breakpoints.down(1300)]: {
