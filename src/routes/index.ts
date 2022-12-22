@@ -1,9 +1,5 @@
 const routes = [
   {
-    name: "Деятельность",
-    path: "/#areas",
-  },
-  {
     name: "Кейсы",
     path: "/cases",
   },
@@ -18,6 +14,10 @@ const routes = [
   {
     name: "Команда",
     path: "/people",
+  },
+  {
+    name: "Контакты",
+    path: "/contacts",
   },
 ];
 
