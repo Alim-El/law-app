@@ -32,7 +32,7 @@ const SwiperItem = () => (
     })}
   >
     <Avatar
-      src="./avatar.jpg"
+      src="./avatar.jpeg"
       className="avatar"
       sx={{ height: 240, width: 240 }}
     />
