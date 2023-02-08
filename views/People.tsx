@@ -8,7 +8,48 @@ import Title from "components/Title";
 import Wrapper from "components/Wrapper";
 import MainLayout from "layouts/MainLayout";
 
-const SwiperItem = () => (
+const people = [
+  {
+    email: "welcome@shtymov.ru",
+    phone: "+7 (495) 147-40-46, доб. 01",
+    fullName: "Мурат Борисович Штымов",
+    position: "руководитель юб Штымов и партнеры",
+    avatar: "./avatar.jpeg",
+    description: (
+      <>
+        Опыт работы в правоохранительных учреждениях более 20 лет.
+        <br />
+        <br />
+        Подполковник полиции в отставке.
+      </>
+    ),
+  },
+  {
+    email: "welcome@shtymov.ru",
+    phone: "+7 (495) 147-40-46, доб. 01",
+    fullName: "Пшихопов Мурат Мухамедович",
+    position: "Председатель коллегии адвокатов МО Закон и человек",
+    avatar: "./pshikhopov-avatar.jpeg",
+  },
+];
+
+interface PeopleItemProps {
+  email: string;
+  phone: string;
+  fullName: string;
+  avatar: string;
+  position: string;
+  description?: React.ReactNode | string;
+}
+
+const PeopleItem = ({
+  fullName,
+  email,
+  phone,
+  position,
+  description,
+  avatar,
+}: PeopleItemProps) => (
   <Box
     sx={(theme) => ({
       width: "100%",
@@ -31,17 +72,15 @@ const SwiperItem = () => (
       },
     })}
   >
-    <Avatar
-      src="./avatar.jpeg"
-      className="avatar"
-      sx={{ height: 240, width: 240 }}
-    />
+    <Avatar src={avatar} className="avatar" sx={{ height: 240, width: 240 }} />
 
     <Stack spacing={2}>
       <div>
-        <Typography level="body4">ОСНОВАТЕЛЬ, УПРАВЛЯЮЩИЙ ПАРТНЕР</Typography>
+        <Typography level="body4" textTransform="uppercase">
+          {position}
+        </Typography>
 
-        <Typography level="body1">Мурат Борисович Штымов</Typography>
+        <Typography level="body1">{fullName}</Typography>
       </div>
 
       <Stack direction="row" spacing={4}>
@@ -50,7 +89,7 @@ const SwiperItem = () => (
             e-mail
           </Typography>
 
-          <Typography level="body2">welcome@shtymov.ru</Typography>
+          <Typography level="body2">{email}</Typography>
         </div>
 
         <div>
@@ -58,18 +97,11 @@ const SwiperItem = () => (
             телефон
           </Typography>
 
-          <Typography level="body2">+7 (495) 147-40-46, доб. 100</Typography>
+          <Typography level="body2">{phone}</Typography>
         </div>
       </Stack>
 
-      <Typography level="body1">
-        Опыт работы в правоохранительных учреждениях более 20 лет.
-        <br />
-        <br />
-        Подполковник полиции в отставке.
-        <br />
-        <br />
-      </Typography>
+      <Typography level="body1">{description}</Typography>
     </Stack>
   </Box>
 );
@@ -92,7 +124,13 @@ const People = () => {
 
         <Divider />
 
-        <SwiperItem />
+        {people.map(({ fullName, ...other }, index) => (
+          <>
+            <PeopleItem key={fullName} fullName={fullName} {...other} />
+
+            {index !== people.length - 1 && <Divider />}
+          </>
+        ))}
       </Stack>
     </Wrapper>
   );
