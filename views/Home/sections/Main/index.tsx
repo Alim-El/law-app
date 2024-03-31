@@ -42,7 +42,7 @@ const MainSection = () => (
             textAlign: ["center", "center", "center", "left"],
           }}
         >
-          Юридическое Бюро {`"Штымов и Партнеры"`}
+          Юридическое Бюро {`"Закон и человек"`}
         </Title>
 
         <Title
@@ -51,7 +51,7 @@ const MainSection = () => (
             textAlign: ["center", "center", "center", "left"],
           }}
         >
-          Юридическое Бюро <br /> {`"Штымов и Партнеры"`}
+          Юридическое Бюро <br /> {`"Закон и человек"`}
         </Title>
         <Title
           sx={{
@@ -59,7 +59,7 @@ const MainSection = () => (
             textAlign: ["center", "center", "center", "left"],
           }}
         >
-          ЮБ {`"Штымов и Партнеры"`}
+          ЮБ {`"Закон и человек"`}
         </Title>
 
         <Description sx={{ textAlign: ["center", "center", "center", "left"] }}>

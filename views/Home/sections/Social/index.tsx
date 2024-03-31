@@ -2,6 +2,7 @@ import { Typography } from "@mui/joy";
 import { Box } from "@mui/system";
 import Image from "next/image";
 
+import { Logo } from "assets/img/Logo";
 import Wrapper from "components/Wrapper";
 
 const Social = () => (
@@ -14,7 +15,9 @@ const Social = () => (
       }}
     >
       <Box mr={[0, 5, 23]}>
-        <Image src="/white-logo.svg" alt="logo" height={100} width={300} />
+        <Box display="flex" alignItems="center" height={150} width={300}>
+          <Logo mode="white" />
+        </Box>
 
         <Typography textColor="#99B6C5" fontSize={19}>
           г. Москва, ул. Академика <br />

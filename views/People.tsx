@@ -13,7 +13,7 @@ const people = [
     email: "welcome@shtymov.ru",
     phone: "+7 (495) 147-40-46, доб. 01",
     fullName: "Мурат Борисович Штымов",
-    position: "руководитель юб Штымов и партнеры",
+    position: "Адвокат",
     avatar: "./avatar.jpeg",
     description: (
       <>
@@ -28,7 +28,7 @@ const people = [
     email: "welcome@shtymov.ru",
     phone: "+7 (495) 147-40-46, доб. 01",
     fullName: "Пшихопов Мурат Мухамедович",
-    position: "Председатель коллегии адвокатов МО Закон и человек",
+    position: "Председатель коллегии",
     avatar: "./pshikhopov-avatar.jpeg",
   },
 ];

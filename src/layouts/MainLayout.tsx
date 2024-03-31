@@ -11,7 +11,7 @@ interface Props {
 
 const MainLayout = ({
   children,
-  title = 'Юридическое бюро "Штымов и Партнеры"',
+  title = 'Юридическое бюро "Закон и человек"',
 }: Props) => {
   return (
     <>
