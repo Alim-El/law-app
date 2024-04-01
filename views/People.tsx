@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Box, Typography } from "@mui/joy";
 import { Avatar, Stack } from "@mui/joy";
 import { Divider } from "@mui/material";
@@ -125,11 +125,11 @@ const People = () => {
         <Divider />
 
         {people.map(({ fullName, ...other }, index) => (
-          <>
-            <PeopleItem key={fullName} fullName={fullName} {...other} />
+          <Fragment key={fullName}>
+            <PeopleItem fullName={fullName} {...other} />
 
             {index !== people.length - 1 && <Divider />}
-          </>
+          </Fragment>
         ))}
       </Stack>
     </Wrapper>

@@ -43,7 +43,7 @@ const MainSection = () => (
             fontSize: 50,
           }}
         >
-          Московская областная коллегия адвокатов <br /> {`"Закон и человек"`}
+          Московская областная коллегия адвокатов <br /> {`"Закон и Человек"`}
         </Title>
 
         <Title
@@ -52,7 +52,7 @@ const MainSection = () => (
             textAlign: ["center", "center", "center", "left"],
           }}
         >
-          Московская областная коллегия адвокатов {`"Закон и человек"`}
+          Московская областная коллегия адвокатов {`"Закон и Человек"`}
         </Title>
         <Title
           sx={{
@@ -60,7 +60,7 @@ const MainSection = () => (
             textAlign: ["center", "center", "center", "left"],
           }}
         >
-          МО Ка {`"Закон и человек"`}
+          МО КА {`"Закон и Человек"`}
         </Title>
 
         <Description sx={{ textAlign: ["center", "center", "center", "left"] }}>

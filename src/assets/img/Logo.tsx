@@ -8,7 +8,7 @@ export const Logo = ({
     <svg
       width="max-content"
       height="214"
-      viewBox="0 0 780 214"
+      viewBox="0 0 805 214"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -37,7 +37,7 @@ export const Logo = ({
         <tspan x="220.43" dy="1em">
           ​
         </tspan>
-        <tspan>и человек</tspan>
+        <tspan>и Человек</tspan>
       </text>
     </svg>
   </Box>

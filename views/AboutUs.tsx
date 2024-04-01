@@ -1,5 +1,3 @@
-import { Box } from "@mui/joy";
-
 import { Logo } from "assets/img/Logo";
 import Description from "components/Description";
 import Title from "components/Title";

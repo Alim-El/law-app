@@ -1,6 +1,5 @@
 import { Typography } from "@mui/joy";
 import { Box } from "@mui/system";
-import Image from "next/image";
 
 import { Logo } from "assets/img/Logo";
 import Wrapper from "components/Wrapper";
