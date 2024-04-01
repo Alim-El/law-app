@@ -6,9 +6,9 @@ export const Logo = ({
 }: BoxProps & { mode?: "white" | "black" }) => (
   <Box {...props}>
     <svg
-      width="max-content"
+      width="content"
       height="214"
-      viewBox="0 0 805 214"
+      viewBox="0 0 810 214"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
