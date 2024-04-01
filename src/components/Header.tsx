@@ -8,9 +8,9 @@ import { Box, IconButton, Link, Stack } from "@mui/joy";
 import { styled } from "@mui/joy/styles";
 import { Divider, Drawer } from "@mui/material";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
 import NextLink from "next/link";
 
+import { Logo } from "assets/img/Logo";
 import routes from "routes";
 
 // import RequestConsultation from "./RequestConsultation";
@@ -83,7 +83,7 @@ const Header = () => {
         <Stack direction="row" spacing={4} sx={{ alignItems: "center" }}>
           <NextLink href="/" passHref>
             <Link>
-              <Image src="/logo.svg" alt="logo" height={100} width={200} />
+              <Logo display="flex" width={150} />
             </Link>
           </NextLink>
 
@@ -175,7 +175,7 @@ const Header = () => {
           justifyContent="space-between"
           pl={2}
         >
-          <Image alt="logo-mini" src="/logo.svg" height={30} width={150} />
+          <Logo display="flex" width={140} height={40} alignItems="center" />
 
           <IconButton
             sx={{ m: 2, alignSelf: "flex-end" }}

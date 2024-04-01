@@ -9,10 +9,7 @@ interface Props {
   title?: string;
 }
 
-const MainLayout = ({
-  children,
-  title = 'Юридическое бюро "Закон и человек"',
-}: Props) => {
+const MainLayout = ({ children, title = 'МO КА "Закон и человек"' }: Props) => {
   return (
     <>
       <Head>

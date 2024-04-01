@@ -32,7 +32,7 @@ const MainSection = () => (
       <Stack
         spacing={6}
         sx={{
-          width: ["100%", "100%", "100%", "50%"],
+          width: ["100%", "100%", "100%", "55%"],
           flex: 1,
         }}
       >
@@ -40,9 +40,10 @@ const MainSection = () => (
           sx={{
             display: ["none", "none", "none", "block"],
             textAlign: ["center", "center", "center", "left"],
+            fontSize: 50,
           }}
         >
-          Юридическое Бюро {`"Закон и человек"`}
+          Московская областная коллегия адвокатов <br /> {`"Закон и человек"`}
         </Title>
 
         <Title
@@ -51,7 +52,7 @@ const MainSection = () => (
             textAlign: ["center", "center", "center", "left"],
           }}
         >
-          Юридическое Бюро <br /> {`"Закон и человек"`}
+          Московская областная коллегия адвокатов {`"Закон и человек"`}
         </Title>
         <Title
           sx={{
@@ -59,7 +60,7 @@ const MainSection = () => (
             textAlign: ["center", "center", "center", "left"],
           }}
         >
-          ЮБ {`"Закон и человек"`}
+          МО Ка {`"Закон и человек"`}
         </Title>
 
         <Description sx={{ textAlign: ["center", "center", "center", "left"] }}>

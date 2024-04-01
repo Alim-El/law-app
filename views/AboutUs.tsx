@@ -1,5 +1,4 @@
 import { Box } from "@mui/joy";
-import Image from "next/image";
 
 import { Logo } from "assets/img/Logo";
 import Description from "components/Description";
@@ -25,23 +24,10 @@ const AboutUs = () => {
         О нас
       </Title>
 
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          position: "relative",
-          height: 150,
-          width: 600,
-          my: [5, 10],
-          mx: "auto",
-        }}
-      >
-        <Logo />
-      </Box>
+      <Logo display="flex" justifyContent="center" my={[5, 10]} mx="auto" />
 
       <Description mb={5} sx={{ textAlign: "justify" }}>
-        <strong>ЮБ «Закон и Человек»</strong> <br />
+        <strong>МО КА «Закон и Человек»</strong> <br />
         <br />
         Правозащитники из «Закон и Человек» — личные помощники, партнеры,
         которые пройдут с вами сложный путь: от консультирования до завершения

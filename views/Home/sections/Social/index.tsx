@@ -22,8 +22,6 @@ const Social = () => (
         <Typography textColor="#99B6C5" fontSize={19}>
           г. Москва, ул. Академика <br />
           Королева д. 8, корп. 2 <br /> <br />
-          МО, г. Мытищи, ул. Летная <br />
-          стр. 19, офис: 375, 376 <br /> <br />
           <a href="tel:+74951474046">+7 (495) 147-40-46</a>
           <br />
           <a href="mailto:welcome@shtymov.ru">welcome@shtymov.ru</a>
