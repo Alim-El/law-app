@@ -7,7 +7,7 @@ export const Logo = ({
   <Box {...props}>
     <svg
       width="content"
-      height="214"
+      height="inherit"
       viewBox="0 0 810 214"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

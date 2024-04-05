@@ -14,9 +14,13 @@ const Social = () => (
       }}
     >
       <Box mr={[0, 5, 23]}>
-        <Box display="flex" alignItems="center" height={150} width={[200, 300]}>
-          <Logo mode="white" />
-        </Box>
+        <Logo
+          mode="white"
+          display="flex"
+          alignItems="center"
+          height={[120, 150]}
+          width={[300, 400]}
+        />
 
         <Typography textColor="#99B6C5" fontSize={19}>
           г. Москва, ул. Академика <br />

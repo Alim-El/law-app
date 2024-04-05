@@ -83,7 +83,7 @@ const Header = () => {
         <Stack direction="row" spacing={4} sx={{ alignItems: "center" }}>
           <NextLink href="/" passHref>
             <Link underline="none">
-              <Logo display="flex" width={150} />
+              <Logo display="flex" width={150} height={100} />
             </Link>
           </NextLink>
 
