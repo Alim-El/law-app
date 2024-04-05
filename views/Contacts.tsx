@@ -3,7 +3,6 @@ import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import PhoneIcon from "@mui/icons-material/Phone";
 import PlaceIcon from "@mui/icons-material/Place";
 import { Box, Link, Stack, Typography } from "@mui/joy";
-import { Divider } from "@mui/material";
 
 import Title from "components/Title";
 import Wrapper from "components/Wrapper";

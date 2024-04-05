@@ -14,7 +14,7 @@ const Social = () => (
       }}
     >
       <Box mr={[0, 5, 23]}>
-        <Box display="flex" alignItems="center" height={150} width={300}>
+        <Box display="flex" alignItems="center" height={150} width={[200, 300]}>
           <Logo mode="white" />
         </Box>
 
