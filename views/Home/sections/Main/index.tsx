@@ -60,7 +60,7 @@ const MainSection = () => (
             textAlign: ["center", "center", "center", "left"],
           }}
         >
-          МО КА {`"Закон и Человек"`}
+          Коллегия адвокатов {`"Закон и Человек"`}
         </Title>
 
         <Description sx={{ textAlign: ["center", "center", "center", "left"] }}>
