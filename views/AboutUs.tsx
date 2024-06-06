@@ -1,4 +1,6 @@
-import { Logo } from "assets/img/Logo";
+import { Box } from "@mui/joy";
+import Image from "next/image";
+
 import Description from "components/Description";
 import Title from "components/Title";
 import Wrapper from "components/Wrapper";
@@ -22,8 +24,6 @@ const AboutUs = () => {
         О нас
       </Title>
 
-      <Logo display="flex" justifyContent="center" my={[5, 10]} mx="auto" />
-
       <Description mb={5} sx={{ textAlign: "justify" }}>
         <strong>МО КА «Закон и Человек»</strong> <br />
         <br />
@@ -39,6 +39,16 @@ const AboutUs = () => {
         сразу озвучиваем перспективу по делу, применяем все законные
         инструменты. <br />
       </Description>
+
+      <Box
+        height={[240, 350]}
+        width={[250, 360]}
+        my={5}
+        position="relative"
+        mx="auto"
+      >
+        <Image src="/new-logo.png" alt="logo" layout="fill" />
+      </Box>
 
       <Description mb={5}>
         {`"ЮРИСТ ДОЛЖЕН БЫТЬ ЧЕСТНЫМ ПО НАТУРЕ, А НЕ ПО ОБСТОЯТЕЛЬСТВАМ."`}

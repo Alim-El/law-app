@@ -8,9 +8,9 @@ import { Box, IconButton, Link, Stack } from "@mui/joy";
 import { styled } from "@mui/joy/styles";
 import { Divider, Drawer } from "@mui/material";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import NextLink from "next/link";
 
-import { Logo } from "assets/img/Logo";
 import routes from "routes";
 
 // import RequestConsultation from "./RequestConsultation";
@@ -65,6 +65,8 @@ const Header = () => {
 
   const handleClose = () => setOpenDrawer(false);
 
+  height.onChange((v) => console.log(v));
+
   return (
     <StyledHeader
       style={{ height }}
@@ -83,7 +85,9 @@ const Header = () => {
         <Stack direction="row" spacing={4} sx={{ alignItems: "center" }}>
           <NextLink href="/" passHref>
             <Link underline="none">
-              <Logo display="flex" width={150} height={100} />
+              <motion.div style={{ height, width: height }}>
+                <Image src="/new-logo.png" alt="logo" layout="fill" />
+              </motion.div>
             </Link>
           </NextLink>
 
@@ -174,13 +178,14 @@ const Header = () => {
           alignItems="center"
           justifyContent="space-between"
           pl={2}
+          component={motion.div}
+          style={{ height }}
         >
-          <Logo display="flex" width={140} height={40} alignItems="center" />
+          <motion.div style={{ height, width: height, position: "relative" }}>
+            <Image src="/new-logo.png" alt="logo" layout="fill" />
+          </motion.div>
 
-          <IconButton
-            sx={{ m: 2, alignSelf: "flex-end" }}
-            onClick={handleClose}
-          >
+          <IconButton sx={{ mr: 2 }} onClick={handleClose}>
             <CloseIcon />
           </IconButton>
         </Box>
