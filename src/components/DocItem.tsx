@@ -66,26 +66,26 @@ const DocItem = ({
           {title}
         </Typography>
 
-        <Link href={`${path}/${id}`} passHref>
-          <MuiLink
-            sx={{
-              display: "flex",
-              color: "#00486D",
-              fontWeight: 400,
-              mt: "auto",
+        <MuiLink
+          sx={{
+            display: "flex",
+            color: "#00486D",
+            fontWeight: 400,
+            mt: "auto",
 
-              [`.${linkClasses.endDecorator}`]: {
-                ml: 2,
-                mt: 0.2,
-              },
-            }}
-            endDecorator={<ArrowIcon />}
-            underline="none"
-            fontSize={(theme) => theme.fontSize.lg}
-          >
-            Подробнее
-          </MuiLink>
-        </Link>
+            [`.${linkClasses.endDecorator}`]: {
+              ml: 2,
+              mt: 0.2,
+            },
+          }}
+          endDecorator={<ArrowIcon />}
+          underline="none"
+          fontSize={(theme) => theme.fontSize.lg}
+          href={`${path}/${id}`}
+          component={Link}
+        >
+          Подробнее
+        </MuiLink>
       </Box>
     </Wrapper>
   );

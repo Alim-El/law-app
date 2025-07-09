@@ -18,7 +18,7 @@
     "dayjs": "^1.11.5",
     "firebase": "^9.11.0",
     "framer-motion": "^7.3.6",
-    "next": "12.2.5",
+    "next": "^15.3.5",
     "nookies": "^2.5.2",
     "nprogress": "^0.2.0",
     "react": "18.2.0",

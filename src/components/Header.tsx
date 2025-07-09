@@ -83,13 +83,11 @@ const Header = () => {
         }}
       >
         <Stack direction="row" spacing={4} sx={{ alignItems: "center" }}>
-          <NextLink href="/" passHref>
-            <Link underline="none">
-              <motion.div style={{ height, width: height }}>
-                <Image src="/new-logo.png" alt="logo" layout="fill" />
-              </motion.div>
-            </Link>
-          </NextLink>
+          <Link underline="none" component={NextLink} href="/">
+            <motion.div style={{ height, width: height }}>
+              <Image src="/new-logo.png" alt="logo" layout="fill" />
+            </motion.div>
+          </Link>
 
           {routes.map(({ name, path }) => (
             <StyledLink
