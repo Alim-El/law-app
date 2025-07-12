@@ -4,9 +4,13 @@ import { Box, Button, CircularProgress } from "@mui/joy";
 
 import Title from "components/Title";
 import Wrapper from "components/Wrapper";
-import useDocs from "data/useDocs";
+// import useDocs from "data/useDocs";
 import MainLayout from "layouts/MainLayout";
 import { Article } from "types";
+
+const isLoading = true;
+const docs: any = [];
+const total = 0;
 
 const Articles = ({
   articles,
@@ -16,10 +20,10 @@ const Articles = ({
   total: number;
 }) => {
   const [counter, setCounter] = useState(15);
-  const {
-    data: { docs, total },
-    isLoading,
-  } = useDocs("articles", counter);
+  // const {
+  //   data: { docs, total },
+  //   isLoading,
+  // } = useDocs("articles", counter);
 
   return (
     <Wrapper sx={{ display: "flex", flexDirection: "column", pb: 5 }}>
