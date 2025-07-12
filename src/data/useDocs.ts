@@ -45,18 +45,10 @@ const laggy: Middleware = (useSWRNext) => {
 
 type Data = { docs: Array<Article>; total: number };
 
-const useDocs = (path: string, count: number, fallbackData: Data) => {
-  const hasMounted = useRef(false);
-
-  useEffect(() => {
-    hasMounted.current = true;
-  }, []);
-
+const useDocs = (path: string, count: number) => {
   const { data, ...other } = useSWR<Data>(
-    [path, count],
-    async (path, ...other) => {
-      console.log(path, other, fallbackData);
-
+    `${path}/${count}`,
+    async () => {
       const articlesRef = collection(db, path);
       const q = query(articlesRef, orderBy("date", "desc"), limit(count));
       const querySnapshot = await getDocs(q);
@@ -70,7 +62,6 @@ const useDocs = (path: string, count: number, fallbackData: Data) => {
       };
     },
     {
-      fallbackData: hasMounted.current ? undefined : fallbackData,
       use: [laggy],
     }
   );

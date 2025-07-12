@@ -2,12 +2,12 @@ import { Article } from "@components/Article";
 import { Box, CircularProgress } from "@mui/joy";
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import type { Article as TArticle } from "types";
 
 import MainLayout from "layouts/MainLayout";
-import { Article as TArticle } from "types";
 import getArticleById from "utils/firebase/getArticleById";
 
-const Case = () => {
+function ArticlePage() {
   const { query } = useRouter();
   const { data, isLoading } = useSWR<TArticle>(
     query.id,
@@ -30,9 +30,11 @@ const Case = () => {
     );
   }
 
-  return <Article previewMode={false} article={data!} path="/cases" />;
-};
+  return <Article previewMode={false} article={data!} path="/articles" />;
+}
 
-Case.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>;
+ArticlePage.getLayout = (page: React.ReactElement) => (
+  <MainLayout>{page}</MainLayout>
+);
 
-export default Case;
+export default ArticlePage;

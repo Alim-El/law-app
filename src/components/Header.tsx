@@ -65,8 +65,6 @@ const Header = () => {
 
   const handleClose = () => setOpenDrawer(false);
 
-  height.onChange((v) => console.log(v));
-
   return (
     <StyledHeader
       style={{ height }}

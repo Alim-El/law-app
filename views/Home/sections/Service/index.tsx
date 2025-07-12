@@ -37,26 +37,25 @@ const Service = () => {
           желаемым результатом.
         </Typography>
 
-        <Link href="/about-us" passHref>
-          <Button
-            sx={{
-              alignSelf: "flex-start",
-              backgroundColor: "white",
-              color: "#00486D",
-              p: (theme) => theme.spacing(1.5, 3),
-              fontSize: 18,
-              lineHeight: "35px",
-              mt: 6,
+        <Button
+          sx={{
+            alignSelf: "flex-start",
+            backgroundColor: "white",
+            color: "#00486D",
+            p: (theme) => theme.spacing(1.5, 3),
+            fontSize: 18,
+            lineHeight: "35px",
+            mt: 6,
 
-              ":hover": {
-                backgroundColor: "#e3e1e1",
-              },
-            }}
-            component="a"
-          >
-            О нашем бюро
-          </Button>
-        </Link>
+            ":hover": {
+              backgroundColor: "#e3e1e1",
+            },
+          }}
+          component={Link}
+          href="/about-us"
+        >
+          О нашем бюро
+        </Button>
       </Box>
     </Wrapper>
   );

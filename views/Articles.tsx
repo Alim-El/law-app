@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import DocItem from "@components/DocItem";
-import { Box, Button } from "@mui/joy";
+import { Box, Button, CircularProgress } from "@mui/joy";
 
 import Title from "components/Title";
 import Wrapper from "components/Wrapper";
@@ -18,38 +18,45 @@ const Articles = ({
   const [counter, setCounter] = useState(15);
   const {
     data: { docs, total },
-  } = useDocs("articles", counter, { docs: articles, total: initialTotal });
+    isLoading,
+  } = useDocs("articles", counter);
 
   return (
     <Wrapper sx={{ display: "flex", flexDirection: "column", pb: 5 }}>
       <Title>Статьи</Title>
 
-      <Box
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: ["center", "center", "flex-start"],
-        }}
-      >
-        {docs.map((props) => (
-          <DocItem
-            sx={{ width: ["none", 400], flex: [1, "none"] }}
-            animated={true}
-            key={props.id}
-            path="articles"
-            {...props}
-          />
-        ))}
-      </Box>
+      {isLoading && <CircularProgress sx={{ m: "auto", mt: 10 }} />}
 
-      {total > counter && (
-        <Button
-          sx={{ alignSelf: "center", mt: 5 }}
-          onClick={() => setCounter(counter + 15)}
-          variant="outlined"
-        >
-          Загрузить еще...
-        </Button>
+      {!isLoading && (
+        <>
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: ["center", "center", "flex-start"],
+            }}
+          >
+            {(docs ?? []).map((props) => (
+              <DocItem
+                sx={{ width: ["none", 400], flex: [1, "none"] }}
+                animated={true}
+                key={props.id}
+                path="articles"
+                {...props}
+              />
+            ))}
+          </Box>
+
+          {total > counter && (
+            <Button
+              sx={{ alignSelf: "center", mt: 5 }}
+              onClick={() => setCounter(counter + 15)}
+              variant="outlined"
+            >
+              Загрузить еще...
+            </Button>
+          )}
+        </>
       )}
     </Wrapper>
   );

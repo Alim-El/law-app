@@ -1,56 +1,56 @@
 import React, { useState } from "react";
-import { Box, Button } from "@mui/joy";
+import { Box, Button, CircularProgress } from "@mui/joy";
 
 import Title from "components/Title";
 import Wrapper from "components/Wrapper";
 import useDocs from "data/useDocs";
 import MainLayout from "layouts/MainLayout";
-import { Article } from "types";
 
 import DocItem from "../src/components/DocItem";
 
-const Cases = ({
-  articles,
-  total: initialTotal,
-}: {
-  articles: Article[];
-  total: number;
-}) => {
+const Cases = () => {
   const [counter, setCounter] = useState(15);
   const {
     data: { docs, total },
-  } = useDocs("cases", counter, { docs: articles, total: initialTotal });
+    isLoading,
+  } = useDocs("cases", counter);
 
   return (
     <Wrapper sx={{ display: "flex", flexDirection: "column", pb: 5 }}>
       <Title>Кейсы</Title>
 
-      <Box
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: ["center", "center", "flex-start"],
-        }}
-      >
-        {docs.map((props) => (
-          <DocItem
-            sx={{ width: ["none", 400], flex: [1, "none"] }}
-            animated={true}
-            key={props.id}
-            path="cases"
-            {...props}
-          />
-        ))}
-      </Box>
+      {isLoading && <CircularProgress sx={{ m: "auto", mt: 10 }} />}
 
-      {total > counter && (
-        <Button
-          sx={{ alignSelf: "center", mt: 5 }}
-          onClick={() => setCounter(counter + 1)}
-          variant="outlined"
-        >
-          Загрузить еще...
-        </Button>
+      {!isLoading && (
+        <>
+          {" "}
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: ["center", "center", "flex-start"],
+            }}
+          >
+            {docs.map((props) => (
+              <DocItem
+                sx={{ width: ["none", 400], flex: [1, "none"] }}
+                animated={true}
+                key={props.id}
+                path="cases"
+                {...props}
+              />
+            ))}
+          </Box>
+          {total > counter && (
+            <Button
+              sx={{ alignSelf: "center", mt: 5 }}
+              onClick={() => setCounter(counter + 1)}
+              variant="outlined"
+            >
+              Загрузить еще...
+            </Button>
+          )}
+        </>
       )}
     </Wrapper>
   );
