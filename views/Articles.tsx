@@ -9,7 +9,7 @@ import MainLayout from "layouts/MainLayout";
 import { Article } from "types";
 
 const isLoading = true;
-const docs: any = [];
+const docs: any[] = [];
 const total = 0;
 
 const Articles = ({
