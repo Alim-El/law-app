@@ -25,45 +25,47 @@ const Articles = ({
   //   isLoading,
   // } = useDocs("articles", counter);
 
-  return (
-    <Wrapper sx={{ display: "flex", flexDirection: "column", pb: 5 }}>
-      <Title>Статьи</Title>
+  return <>test</>;
 
-      {isLoading && <CircularProgress sx={{ m: "auto", mt: 10 }} />}
+  // return (
+  //   <Wrapper sx={{ display: "flex", flexDirection: "column", pb: 5 }}>
+  //     <Title>Статьи</Title>
 
-      {!isLoading && (
-        <>
-          <Box
-            sx={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: ["center", "center", "flex-start"],
-            }}
-          >
-            {(docs ?? []).map((props) => (
-              <DocItem
-                sx={{ width: ["none", 400], flex: [1, "none"] }}
-                animated={true}
-                key={props.id}
-                path="articles"
-                {...props}
-              />
-            ))}
-          </Box>
+  //     {isLoading && <CircularProgress sx={{ m: "auto", mt: 10 }} />}
 
-          {total > counter && (
-            <Button
-              sx={{ alignSelf: "center", mt: 5 }}
-              onClick={() => setCounter(counter + 15)}
-              variant="outlined"
-            >
-              Загрузить еще...
-            </Button>
-          )}
-        </>
-      )}
-    </Wrapper>
-  );
+  //     {!isLoading && (
+  //       <>
+  //         <Box
+  //           sx={{
+  //             display: "flex",
+  //             flexWrap: "wrap",
+  //             justifyContent: ["center", "center", "flex-start"],
+  //           }}
+  //         >
+  //           {(docs ?? []).map((props) => (
+  //             <DocItem
+  //               sx={{ width: ["none", 400], flex: [1, "none"] }}
+  //               animated={true}
+  //               key={props.id}
+  //               path="articles"
+  //               {...props}
+  //             />
+  //           ))}
+  //         </Box>
+
+  //         {total > counter && (
+  //           <Button
+  //             sx={{ alignSelf: "center", mt: 5 }}
+  //             onClick={() => setCounter(counter + 15)}
+  //             variant="outlined"
+  //           >
+  //             Загрузить еще...
+  //           </Button>
+  //         )}
+  //       </>
+  //     )}
+  //   </Wrapper>
+  // );
 };
 
 Articles.getLayout = (page: React.ReactElement) => (
