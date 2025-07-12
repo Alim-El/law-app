@@ -9,7 +9,7 @@ import Social from "./sections/Social";
 
 const Home = () => (
   <>
-    {/* <MainSection />
+    <MainSection />
 
     <AreasSection />
 
@@ -19,7 +19,7 @@ const Home = () => (
 
     <Consultation />
 
-    <Social /> */}
+    <Social />
   </>
 );
 
