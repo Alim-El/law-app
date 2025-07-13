@@ -3,6 +3,7 @@ import { styled } from "@mui/joy/styles";
 import { SxProps } from "@mui/joy/styles/types";
 import dayjs from "dayjs";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { ArrowIcon } from "assets/img";
 import { Article } from "types";
@@ -28,6 +29,7 @@ const DocItem = ({
   sx,
   path,
 }: Article & { animated: boolean; sx?: SxProps; path: string }) => {
+  const router = useRouter();
   return (
     <Wrapper data-aos={animated && "fade-up"} data-aos-once="true" sx={sx}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -81,7 +83,10 @@ const DocItem = ({
           endDecorator={<ArrowIcon />}
           underline="none"
           fontSize={(theme) => theme.fontSize.lg}
-          href={`${path}/${id}`}
+          href={{
+            pathname: `/${path}/[id]`,
+            query: { id },
+          }}
           component={Link}
         >
           Подробнее
