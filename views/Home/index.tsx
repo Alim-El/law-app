@@ -15,7 +15,7 @@ const Home = () => {
   const { pathname } = router;
 
   useLayoutEffect(() => {
-    console.log(pathname);
+    console.log(pathname, window.location?.pathname);
   }, [pathname]);
 
   return (

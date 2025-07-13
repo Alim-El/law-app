@@ -6,12 +6,6 @@ const nextConfig = {
     domains: ["www.tripadvisor.ru"],
     unoptimized: true,
   },
-  rewrites: async () => [
-    {
-      source: "/(.*)",
-      destination: "/index.html",
-    },
-  ],
 };
 
 module.exports = nextConfig;
