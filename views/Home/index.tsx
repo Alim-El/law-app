@@ -15,8 +15,8 @@ const Home = () => {
   const { pathname } = router;
 
   useLayoutEffect(() => {
-    console.log(pathname, window.location?.pathname);
-  }, [pathname]);
+    window.location?.pathname !== "/" && router.push(window.location.pathname);
+  }, [pathname, router]);
 
   return (
     <>
