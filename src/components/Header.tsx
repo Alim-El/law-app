@@ -4,12 +4,12 @@ import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import { Box, IconButton, Link, Stack } from "@mui/joy";
+import { Box, IconButton, Link, LinkProps, Stack } from "@mui/joy";
 import { styled } from "@mui/joy/styles";
 import { Divider, Drawer } from "@mui/material";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import NextLink from "next/link";
+import NextLink, { LinkProps as NextLinkProps } from "next/link";
 
 import routes from "routes";
 
@@ -31,7 +31,9 @@ const StyledHeader = styled(motion.header)(({ theme }) => ({
   zIndex: 9,
 }));
 
-const StyledLink = styled(Link)({
+const StyledLink = styled((props: LinkProps & NextLinkProps) => (
+  <Link {...props} component={NextLink} />
+))({
   ":before": {
     content: `''`,
     position: "absolute",
