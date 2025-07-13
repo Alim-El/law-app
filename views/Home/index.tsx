@@ -1,3 +1,6 @@
+import { useLayoutEffect } from "react";
+import { useRouter } from "next/router";
+
 import MainLayout from "layouts/MainLayout";
 
 import AreasSection from "./sections/Areas";
@@ -7,21 +10,30 @@ import MainSection from "./sections/Main";
 import Service from "./sections/Service";
 import Social from "./sections/Social";
 
-const Home = () => (
-  <>
-    <MainSection />
+const Home = () => {
+  const router = useRouter();
+  const { pathname } = router;
 
-    <AreasSection />
+  useLayoutEffect(() => {
+    console.log(pathname);
+  }, [pathname]);
 
-    <Service />
+  return (
+    <>
+      <MainSection />
 
-    <Articles />
+      <AreasSection />
 
-    <Consultation />
+      <Service />
 
-    <Social />
-  </>
-);
+      <Articles />
+
+      <Consultation />
+
+      <Social />
+    </>
+  );
+};
 
 Home.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>;
 
