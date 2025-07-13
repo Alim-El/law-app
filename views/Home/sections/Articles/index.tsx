@@ -80,14 +80,6 @@ const Articles = () => {
           {loading ? <CircularProgress /> : "Загрузить еще..."}
         </Button>
       )}
-
-      {/* {isMobile && (
-        <Link href="/articles" passHref>
-          <Button component="a" variant="plain">
-            Все статьи
-          </Button>
-        </Link>
-      )} */}
     </Wrapper>
   );
 };

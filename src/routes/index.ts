@@ -1,11 +1,11 @@
 const routes = [
   {
     name: "Кейсы",
-    path: "/cases",
+    path: "/cases/all",
   },
   {
     name: "Статьи",
-    path: "/articles",
+    path: "/articles/all",
   },
   {
     name: "О нас",
